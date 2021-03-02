@@ -7,10 +7,37 @@ if __name__ == "__main__":
             graph_input = graph_input.readlines()
             input_type = check_type_of_input(graph_input)
             graph = Graph.create_graph_representation(input_type, graph_input)
+            
+            print("INPUT:")
             graph.print_graph_representation()
+
+            graph.change_graph_representation_to("incidence_matrix")
+            # AM <-> IM
+            print("AM <-> IM:")   
+            graph.print_graph_representation()         
             graph.change_graph_representation_to("adjacency_matrix")
+            graph.print_graph_representation()
+            graph.change_graph_representation_to("incidence_matrix")
+            graph.print_graph_representation()  
+
+            # IM <-> AL
+            print("IM <-> AL:")   
+            graph.print_graph_representation()     
+            graph.change_graph_representation_to("adjacency_list")
+            graph.print_graph_representation()
+            graph.change_graph_representation_to("incidence_matrix")
+            graph.print_graph_representation() 
+
+            graph.change_graph_representation_to("adjacency_matrix")
+            # AM <-> AL
+            print("AM <-> AL:")   
             graph.print_graph_representation()
             graph.change_graph_representation_to("adjacency_list")
             graph.print_graph_representation()
+            graph.change_graph_representation_to("adjacency_matrix")
+            graph.print_graph_representation()
+
+
+
         except BadInputException:
             print(BadInputException)
