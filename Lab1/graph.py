@@ -27,12 +27,11 @@ class Graph:
                 self.change_to_adjacency_matrix()
 
     def change_to_adjacency_matrix(self):
+        if self.representation_type == "incidence_matrix":
+            self.change_to_adjacency_list()      # to do albo i nie to do, bo dziala ale posrednio
         if self.representation_type == "adjacency_list":
             self.set_graph_representation_type("adjacency_matrix")
-            self.graph_representation = self.create_adjacency_matrix_from_list()
-        if self.representation_type == "incidence_matrix":
-            pass
-            # to do 
+            self.graph_representation = self.create_adjacency_matrix_from_list() 
 
 
     def change_to_adjacency_list(self):
@@ -40,16 +39,60 @@ class Graph:
             self.set_graph_representation_type("adjacency_list")
             self.graph_representation = self.create_list_from_adjacency_matrix()
         if self.representation_type == "incidence_matrix":
-            pass
-            # to do 
+            self.set_graph_representation_type("adjacency_list")
+            self.create_list_from_incidence_matrix()
             
     def change_to_incidence_matrix(self):
         if self.representation_type == "adjacency_list":
-            pass
-            # to do 
+            self.change_to_adjacency_matrix()    # to do albo i nie to do, bo dziala ale posrednio
         if self.representation_type == "adjacency_matrix":
-            pass
-            # to do 
+            self.set_graph_representation_type("incidence_matrix")
+            self.create_incidence_matrix_from_adjacency_matrix() 
+
+    def create_list_from_incidence_matrix(self):
+        n = len(self.graph_representation) # number of nodes
+
+        # creating enpty list
+        new_representation = []
+        for i in range(n):
+            new_representation.append([])
+
+        e = len(self.graph_representation[0]) # number of edges
+
+        for i in range(n):
+            for j in range(e):
+                if(self.graph_representation[i][j]):
+                    for k in range(n):
+                        if(self.graph_representation[k][j] and k != i):
+                            new_representation[i].append(k+1)
+                            break
+            new_representation[i].sort()
+
+        self.graph_representation = [list(map(int, line)) for line in new_representation]
+
+
+    def create_incidence_matrix_from_adjacency_matrix(self):
+        number_of_edges = 0
+        n = len(self.graph_representation) # number of nodes
+
+        # calculating number of edges in graph
+        for i in range(n):
+            for j in range(i + 1, n):
+                if(self.graph_representation[i][j]):
+                    number_of_edges += 1
+
+        new_representation = np.zeros((n, number_of_edges))
+        edge_counter = 0
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                if(self.graph_representation[i][j]):
+                    new_representation[i][edge_counter] = 1
+                    new_representation[j][edge_counter] = 1
+                    edge_counter += 1
+
+        self.graph_representation = [list(map(int,line)) for line in new_representation]
+
 
     def create_adjacency_matrix_from_list(self):
         matrix = np.zeros((len(self.graph_representation), len(self.graph_representation)))
