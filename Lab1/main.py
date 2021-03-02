@@ -1,5 +1,6 @@
 from handleInput import check_type_of_input, BadInputException
 from graph import Graph
+from plot import plot_graph
 
 if __name__ == "__main__":
     with open ('input/input.txt', 'r') as graph_input:
@@ -37,7 +38,7 @@ if __name__ == "__main__":
             graph.change_graph_representation_to("adjacency_matrix")
             graph.print_graph_representation()
 
-
+            plot_graph(graph)
 
         except BadInputException:
             print(BadInputException)
