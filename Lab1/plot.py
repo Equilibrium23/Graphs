@@ -20,7 +20,7 @@ def plot_graph(graph):
         for neighbor in graph.graph_representation[count]:
             x2 = radius*cos(radians(((neighbor-1)/number_of_nodes*360)))
             y2 = radius*sin(radians(((neighbor-1)/number_of_nodes*360)))
-            ax.plot([x, x2], [y, y2])
+            ax.plot([x, x2], [y, y2], color='gray')
 
         node_circle = plt.Circle((x, y), 0.5, color='orange')
         ax.text(x - 0.2, y - 0.2, f'{count+1}')
