@@ -4,11 +4,13 @@ class Graph:
     @staticmethod
     def create_graph_representation(representation_type, graph_input):
         if representation_type == "adjacency_list":
-            neighborhood_of_vertexes  = [list(map(int, line.split(". ")[1].split(" "))) for line in graph_input]
-            return Graph(representation_type, {vertex:neighborhood_of_vertexes[vertex] for vertex in range(len(neighborhood_of_vertexes))})
-        else:
+            neighborhood_of_vertices  = [list(map(int, line.split(". ")[1].split(" "))) for line in graph_input]
+            return Graph(representation_type, {vertex:neighborhood_of_vertices[vertex] for vertex in range(len(neighborhood_of_vertices))})
+        elif type(graph_input) is type(str):
             # incidence_matrix or adjacency_matrix so graph rep is matrix
             return Graph(representation_type, [list(map(int, line.split(" "))) for line in graph_input])
+        else:
+            return Graph(representation_type, graph_input)
 
     def __init__(self, representation_type, graph_representation):
         self.representation_type = representation_type
