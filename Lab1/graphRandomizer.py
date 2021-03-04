@@ -19,9 +19,9 @@ def createIncidenceMatrixFromEdgesList(graph,count_of_vertices,count_of_edges):
     return matrix
 
 #G(n,l)
-def generateGraph_G_n_l():
-    n = int(input("Give number of vertexes (n) \n"))
-    l = int(input("Give number of edges (l) \n"))
+def generateGraph_G_n_l(n, l):
+    # n = int(input("Give number of vertexes (n) \n"))
+    # l = int(input("Give number of edges (l) \n"))
     vertices = [ vertex_nr for vertex_nr in range(n) ]
     max_possibilities = sum(1 for _ in itertools.combinations(vertices,2))
     if l > max_possibilities:
@@ -31,14 +31,16 @@ def generateGraph_G_n_l():
         graph = { i:next(vertices_generator) for i in range(l)} #edge_nr:list of vertices which edge is connecting
         matrix = createIncidenceMatrixFromEdgesList(graph,n,l)
         graph = Graph.create_graph_representation("incidence_matrix",matrix)
-        plot_graph(graph)
-
+        return graph
 
 #G(n,p)
-def generateGraph_G_n_p():
-    pass 
-    #to do 
-
-if __name__ == "__main__":
-    print("Generate G(n,l):")
-    generateGraph_G_n_l()
+def generateGraph_G_n_p(n, p):
+    matrix = [[0 for i in range(n)] for j in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if j < i and random.randint(0, 100) < p:
+                matrix[i][j] = 1
+            matrix[j][i] = matrix[i][j]
+    
+    graph = Graph.create_graph_representation("adjacency_matrix", matrix)
+    return graph
