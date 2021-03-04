@@ -11,34 +11,34 @@ def two_vertices(vertices):
             list_of_generated_veritces.append(two_vertices)
             yield two_vertices
 
-def createIncidenceMatrixFromEdgesList(graph,count_of_vertices,count_of_edges):
+
+def create_incidence_matrix_from_edges_list(graph,count_of_vertices,count_of_edges):
     matrix = [[0]*count_of_edges for _ in range(count_of_vertices)]
-    for edge_nr,vertices in graph.items():
+    for edge_nr, vertices in graph.items():
         for vertex in vertices:
             matrix[vertex][edge_nr] = 1
     return matrix
 
-#G(n,l)
-def generateGraph_G_n_l(n, l):
-    # n = int(input("Give number of vertexes (n) \n"))
-    # l = int(input("Give number of edges (l) \n"))
-    vertices = [ vertex_nr for vertex_nr in range(n) ]
+
+def generate_Gnl_graph(number_of_vertexes, number_of_edges):
+    
+    vertices = [ vertex_nr for vertex_nr in range(number_of_vertexes) ]
     max_possibilities = sum(1 for _ in itertools.combinations(vertices,2))
-    if l > max_possibilities:
+    if number_of_edges > max_possibilities:
         raise Exception("number of edges is too large with this number of vertexes")
     else:
         vertices_generator = two_vertices(vertices)
-        graph = { i:next(vertices_generator) for i in range(l)} #edge_nr:list of vertices which edge is connecting
-        matrix = createIncidenceMatrixFromEdgesList(graph,n,l)
-        graph = Graph.create_graph_representation("incidence_matrix",matrix)
+        graph = { i:next(vertices_generator) for i in range(number_of_edges)} #edge_nr:list of vertices which edge is connecting
+        matrix = create_incidence_matrix_from_edges_list(graph, number_of_vertexes, number_of_edges)
+        graph = Graph.create_graph_representation("incidence_matrix", matrix)
         return graph
 
-#G(n,p)
-def generateGraph_G_n_p(n, p):
-    matrix = [[0 for i in range(n)] for j in range(n)]
-    for i in range(n):
-        for j in range(n):
-            if j < i and random.randint(0, 100) < p:
+
+def generate_Gnp_graph(number_of_vertexes, probability):
+    matrix = [[0 for i in range(number_of_vertexes)] for j in range(number_of_vertexes)]
+    for i in range(number_of_vertexes):
+        for j in range(number_of_vertexes):
+            if j < i and random.randint(0, 100) < probability:
                 matrix[i][j] = 1
             matrix[j][i] = matrix[i][j]
     

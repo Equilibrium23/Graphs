@@ -7,10 +7,10 @@ class Graph:
             neighborhood_of_vertices  = [list(map(int, line.split(". ")[1].split(" "))) for line in graph_input]
             return Graph(representation_type, {vertex:neighborhood_of_vertices[vertex] for vertex in range(len(neighborhood_of_vertices))})
         elif type(graph_input) is type(str):
-            # incidence_matrix or adjacency_matrix so graph rep is matrix
             return Graph(representation_type, [list(map(int, line.split(" "))) for line in graph_input])
         else:
             return Graph(representation_type, graph_input)
+
 
     def __init__(self, representation_type, graph_representation):
         self.representation_type = representation_type
@@ -28,9 +28,10 @@ class Graph:
             else:
                 self.change_to_adjacency_matrix()
 
+
     def change_to_adjacency_matrix(self):
         if self.representation_type == "incidence_matrix":
-            self.change_to_adjacency_list()      # to do albo i nie to do, bo dziala ale posrednio
+            self.change_to_adjacency_list()
         if self.representation_type == "adjacency_list":
             self.set_graph_representation_type("adjacency_matrix")
             self.graph_representation = self.create_adjacency_matrix_from_list() 
@@ -44,27 +45,28 @@ class Graph:
             self.set_graph_representation_type("adjacency_list")
             self.create_list_from_incidence_matrix()
             
+
     def change_to_incidence_matrix(self):
         if self.representation_type == "adjacency_list":
-            self.change_to_adjacency_matrix()    # to do albo i nie to do, bo dziala ale posrednio
+            self.change_to_adjacency_matrix()
         if self.representation_type == "adjacency_matrix":
             self.set_graph_representation_type("incidence_matrix")
             self.create_incidence_matrix_from_adjacency_matrix() 
 
-    def create_list_from_incidence_matrix(self):
-        n = len(self.graph_representation) # number of nodes
 
-        # creating enpty list
+    def create_list_from_incidence_matrix(self):
+        nodes_count = len(self.graph_representation)
+        
         new_representation = []
-        for i in range(n):
+        for i in range(nodes_count):
             new_representation.append([])
 
-        e = len(self.graph_representation[0]) # number of edges
+        edges_count = len(self.graph_representation[0])
 
-        for i in range(n):
-            for j in range(e):
+        for i in range(nodes_count):
+            for j in range(edges_count):
                 if(self.graph_representation[i][j]):
-                    for k in range(n):
+                    for k in range(nodes_count):
                         if(self.graph_representation[k][j] and k != i):
                             new_representation[i].append(k+1)
                             break
@@ -75,19 +77,18 @@ class Graph:
 
     def create_incidence_matrix_from_adjacency_matrix(self):
         number_of_edges = 0
-        n = len(self.graph_representation) # number of nodes
+        nodes_count = len(self.graph_representation)
 
-        # calculating number of edges in graph
-        for i in range(n):
-            for j in range(i + 1, n):
+        for i in range(nodes_count):
+            for j in range(i + 1, nodes_count):
                 if(self.graph_representation[i][j]):
                     number_of_edges += 1
 
-        new_representation = np.zeros((n, number_of_edges))
+        new_representation = np.zeros((nodes_count, number_of_edges))
         edge_counter = 0
 
-        for i in range(n):
-            for j in range(i + 1, n):
+        for i in range(nodes_count):
+            for j in range(i + 1, nodes_count):
                 if(self.graph_representation[i][j]):
                     new_representation[i][edge_counter] = 1
                     new_representation[j][edge_counter] = 1
@@ -104,6 +105,7 @@ class Graph:
                 matrix[node][neighbor - 1] = 1
                 matrix[neighbor - 1][node] = 1
         return matrix
+
 
     def create_list_from_adjacency_matrix(self):
         neighbors = list()
@@ -134,6 +136,7 @@ class Graph:
                     print(node, end = ' ')
                 print()
         print()
+
 
     def set_graph_representation_type(self, new_type):
         self.representation_type = new_type
