@@ -1,5 +1,7 @@
-from graph import Graph
-from plot import plot_graph
+import sys
+sys.path.append('../')
+from Lab1.graph import Graph
+from Lab1.plot import plot_graph
 
 def is_graphic_string(A):
     list.sort(A)
