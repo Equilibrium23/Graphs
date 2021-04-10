@@ -6,7 +6,7 @@ class Graph:
         if representation_type == "adjacency_list":
             neighborhood_of_vertices  = [list(map(int, line.split(". ")[1].split(" "))) for line in graph_input]
             return Graph(representation_type, {vertex:neighborhood_of_vertices[vertex] for vertex in range(len(neighborhood_of_vertices))})
-        elif type(graph_input) is type(str):
+        elif type(graph_input[0]) is str:
             return Graph(representation_type, [list(map(int, line.split(" "))) for line in graph_input])
         else:
             return Graph(representation_type, graph_input)
@@ -56,7 +56,8 @@ class Graph:
 
     def create_list_from_incidence_matrix(self):
         nodes_count = len(self.graph_representation)
-        
+        print(len(self.graph_representation))
+        print(len(self.graph_representation[0]))
         new_representation = []
         for i in range(nodes_count):
             new_representation.append([])
