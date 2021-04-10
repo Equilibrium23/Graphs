@@ -4,19 +4,39 @@ from Lab1.graph import Graph
 from Lab1.plot import plot_graph
 from Lab1.handleInput import *
 
+def find_connected_components(G: Graph):
+    old_representation = G.representation_type
+    G.change_graph_representation_to("adjacency_list")
 
-def Components_R(nr, v, G, comp):
+    comp = components(graph)
+    number_of_connected_components = max(comp)
+    connected_components_list = []
+    for i in range(number_of_connected_components):
+        connected_components_list.append([])
+        for j in range(len(G.graph_representation)):
+            if(i + 1 == comp[j]):
+                connected_components_list[i].append(j + 1)
+
+    for i in range(len(connected_components_list)):
+        temp_str = f"{i + 1}: "
+        for c in connected_components_list[i]:
+            temp_str = temp_str + f"{c} "
+        print(temp_str)
+
+    plot_graph(graph, comp)
+
+    G.change_graph_representation_to(old_representation)
+
+
+def components_R(nr, v, G, comp):
     for u in range(len(G.graph_representation[v])):
         node = G.graph_representation[v][u]
         if(comp[node - 1] == -1):
             comp[node - 1] = nr
-            Components_R(nr, node - 1, G, comp)
+            components_R(nr, node - 1, G, comp)
         
 
-def Components(G: Graph):
-    old_representation = G.representation_type
-    G.change_graph_representation_to("adjacency_list")
-
+def components(G: Graph):
     nr = 0
     comp = []
     for node in range(len(G.graph_representation)):
@@ -25,15 +45,14 @@ def Components(G: Graph):
         if(comp[v] == -1):
             nr = nr + 1
             comp[v] = nr
-            Components_R(nr, v, G, comp)
-    
-    G.change_graph_representation_to(old_representation)
-    return comp
+            components_R(nr, v, G, comp)
 
+    return comp
 
 
 if __name__ == "__main__":
 
+    #examples
     graph_input1 = [ "0 1 0 0 1 1 0 0 0 0 0 0",
                     "1 0 1 0 0 1 0 0 0 0 0 0",
                     "0 1 0 1 1 0 0 0 0 0 0 1",
@@ -85,10 +104,7 @@ if __name__ == "__main__":
     input_type = check_type_of_input(graph_input)
     graph = Graph.create_graph_representation(input_type, graph_input)
 
-    comp = Components(graph)
-    print(comp)
-
-    plot_graph(graph, comp)
+    find_connected_components(graph)
 
 
 
