@@ -28,6 +28,10 @@ def find_connected_components(G: Graph):
     G.change_graph_representation_to(old_representation)
 
 
+def get_number_of_connected_components(G: Graph):
+    return max(components(G))
+
+
 def components_R(nr, v, G, comp):
     for u in range(len(G.graph_representation[v])):
         node = G.graph_representation[v][u]
