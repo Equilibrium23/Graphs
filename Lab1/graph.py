@@ -56,8 +56,6 @@ class Graph:
 
     def create_list_from_incidence_matrix(self):
         nodes_count = len(self.graph_representation)
-        print(len(self.graph_representation))
-        print(len(self.graph_representation[0]))
         new_representation = []
         for i in range(nodes_count):
             new_representation.append([])
