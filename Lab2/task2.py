@@ -6,12 +6,12 @@ from Lab1.plot import plot_graph
 def is_graphic_string(A):
     list.sort(A)
     while True:
-        if sum(A) == 0:
-            return True
-
         for node in A:
             if node < 0 or node >= len(A):
                 return False
+
+        if sum(A) == 0:
+            return True
 
         i = 1
         while i <= A[0]:
@@ -28,16 +28,18 @@ def generate_graph_from_graphic_string(A):
     list.sort(A, reverse=True)
     n = len(A)
     matrix = [[0 for i in range(n)] for j in range(n)]
+    print(n)
+    print(A)
 
     for i in range(n):
-        j = 0
+        j = 1
         while A[i] > 0:
-            if i < j and A[j] > 0:
+            if (i < j or (i == n - 1 and j == 0)) and A[j] > 0:
                 matrix[i][j] = 1
                 matrix[j][i] = 1
                 A[i] = A[i] - 1
                 A[j] = A[j] - 1
-            j = j + 1
+            j = (j + 1) % n
 
     graph = Graph.create_graph_representation("adjacency_matrix", matrix)
     return graph
