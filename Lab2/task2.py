@@ -28,8 +28,6 @@ def generate_graph_from_graphic_string(A):
     list.sort(A, reverse=True)
     n = len(A)
     matrix = [[0 for i in range(n)] for j in range(n)]
-    print(n)
-    print(A)
 
     for i in range(n):
         j = 1

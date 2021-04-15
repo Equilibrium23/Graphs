@@ -8,17 +8,11 @@ from task2 import is_graphic_string, generate_graph_from_graphic_string
 
 from random import randrange
 
-def compute_max_connections(vertex_count):
-	if vertex_count % 2:
-		return vertex_count
-	else:
-		return vertex_count + 1 
-
 def generate_vertex_degrees(vertex_count):
 	vertex_degrees = []
 
 	for i in range(vertex_count):
-		vertex_degrees.append(randrange(2, compute_max_connections(vertex_count), 2))
+		vertex_degrees.append(randrange(2, vertex_count, 2))
 
 	return vertex_degrees
 
@@ -30,14 +24,14 @@ def generate_graphic_string(vertex_count):
 
 	return vertex_degrees
 
-def generate_random_eulerian_graph():
-	vertex_count = randrange(3, 10)
+def generate_random_eulerian_graph(min, max):
+	vertex_count = randrange(min, max)
 	vertex_degrees = generate_graphic_string(vertex_count)
 
 	return generate_graph_from_graphic_string(vertex_degrees)
 
 def main():
-	plot_graph(generate_random_eulerian_graph())
+	plot_graph(generate_random_eulerian_graph(3, 10))
 
 if __name__ == "__main__":
 	main()
