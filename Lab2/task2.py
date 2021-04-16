@@ -29,15 +29,15 @@ def generate_graph_from_graphic_string(A):
     n = len(A)
     matrix = [[0 for i in range(n)] for j in range(n)]
 
-    for i in range(n):
-        j = 1
-        while A[i] > 0:
-            if (i < j or (i == n - 1 and j == 0)) and A[j] > 0:
+    j = 0
+    while A[j] > 0:
+        for i in range(n):
+            if (i < j or (i == n - 1 and j == 0)) and A[i] > 0:
                 matrix[i][j] = 1
                 matrix[j][i] = 1
                 A[i] = A[i] - 1
                 A[j] = A[j] - 1
-            j = (j + 1) % n
+        j = (j + 1) % n
 
     graph = Graph.create_graph_representation("adjacency_matrix", matrix)
     return graph

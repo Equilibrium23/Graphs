@@ -5,6 +5,7 @@ from Lab1.plot import plot_graph
 from Lab1.graphRandomizer import *
 from Lab1.handleInput import *
 from task2 import is_graphic_string, generate_graph_from_graphic_string
+from if_eulerian_graph import check_if_eulerian
 
 from random import randrange
 
@@ -31,7 +32,10 @@ def generate_random_eulerian_graph(min, max):
 	return generate_graph_from_graphic_string(vertex_degrees)
 
 def main():
-	plot_graph(generate_random_eulerian_graph(3, 10))
+	graph = generate_random_eulerian_graph(3, 10)
+	is_euler = check_if_eulerian(graph)
+	print(f"Czy graf jest eulerowski: {is_euler}")
+	plot_graph(graph)
 
 if __name__ == "__main__":
 	main()

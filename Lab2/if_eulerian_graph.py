@@ -4,7 +4,7 @@ from Lab1.graph import Graph
 from Lab1.plot import plot_graph
 from Lab1.graphRandomizer import *
 from Lab1.handleInput import *
-from task2_2 import get_number_of_connected_components
+from task2_3 import get_number_of_connected_components
 
 import copy
 import random
