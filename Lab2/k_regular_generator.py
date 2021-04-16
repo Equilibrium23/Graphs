@@ -8,8 +8,16 @@ from task2 import is_graphic_string, generate_graph_from_graphic_string
 
 from random import randrange
 
+def generate_vertex_count(k):
+	vertex_count = randrange(k + 1, 10)
+
+	while (vertex_count * k) % 2:
+		vertex_count = randrange(k + 1, 10)
+
+	return vertex_count 
+
 def generate_graph_properties(k):
-	vertex_count = 6
+	vertex_count = generate_vertex_count(k)
 	string = [k for i in range(vertex_count)]
 	return vertex_count, string
 
@@ -20,11 +28,12 @@ def generate_k_regular_graph(k):
 	while is_graphic_string(graphic_string) is False:
 		vertex_count, graphic_string = generate_graph_properties(k)
 	
-	plot_graph(generate_graph_from_graphic_string(graphic_string))
+	return generate_graph_from_graphic_string(graphic_string)
 
 
 def main():
-	generate_k_regular_graph(3)
+	graph = generate_k_regular_graph(3)
+	plot_graph(graph)
 
 if __name__ == "__main__":
 	main()

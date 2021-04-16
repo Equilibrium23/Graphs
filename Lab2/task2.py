@@ -3,7 +3,8 @@ sys.path.append('../')
 from Lab1.graph import Graph
 from Lab1.plot import plot_graph
 
-def is_graphic_string(A):
+def is_graphic_string(string):
+    A = string.copy()
     list.sort(A)
     while True:
         for node in A:
@@ -22,7 +23,7 @@ def is_graphic_string(A):
         list.sort(A, reverse=True)
 
 def generate_graph_from_graphic_string(A):
-    if not is_graphic_string(A.copy()):
+    if not is_graphic_string(A):
         raise Exception("To nie jest ciag graficzny")
 
     list.sort(A, reverse=True)

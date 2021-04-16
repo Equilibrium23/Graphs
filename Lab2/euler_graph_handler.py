@@ -20,7 +20,7 @@ def generate_vertex_degrees(vertex_count):
 def generate_graphic_string(vertex_count):
 	vertex_degrees = generate_vertex_degrees(vertex_count)
 
-	while is_graphic_string(vertex_degrees.copy()) is False:
+	while is_graphic_string(vertex_degrees) is False:
 		vertex_degrees = generate_vertex_degrees(vertex_count)
 
 	return vertex_degrees
