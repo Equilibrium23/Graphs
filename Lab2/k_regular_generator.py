@@ -32,7 +32,9 @@ def generate_k_regular_graph(k):
 
 
 def main():
-	graph = generate_k_regular_graph(3)
+	k = randrange(0, 6)
+	graph = generate_k_regular_graph(k)
+	print(f"generated {k}_regular graph")
 	plot_graph(graph)
 
 if __name__ == "__main__":
