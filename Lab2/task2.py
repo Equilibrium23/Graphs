@@ -34,13 +34,11 @@ def generate_graph_from_graphic_string(A):
 
     while sum([n[1] for n in mod_A]):
         list.sort(mod_A, key=lambda x: x[1], reverse=True)
-        for i in range(1, n):
-            if matrix[mod_A[0][0]][mod_A[i][0]] == 0:
-                matrix[mod_A[0][0]][mod_A[i][0]] = 1
-                matrix[mod_A[i][0]][mod_A[0][0]] = 1
-                mod_A[i][1] = mod_A[i][1] - 1
-                mod_A[0][1] = mod_A[0][1] - 1
-                break
+        for i in range(1, mod_A[0][1]+1):
+            mod_A[i][1] = mod_A[i][1] - 1
+            mod_A[0][1] = mod_A[0][1] - 1
+            matrix[mod_A[i][0]][mod_A[0][0]] = 1
+            matrix[mod_A[0][0]][mod_A[i][0]] = 1
 
     graph = Graph.create_graph_representation("adjacency_matrix", matrix)
     return graph
