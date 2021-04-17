@@ -2,6 +2,7 @@ import sys
 sys.path.append('../')
 from Lab1.graph import Graph
 from Lab1.plot import plot_graph
+from graph_randomizer import randomize_edges
 
 def is_graphic_string(string):
     A = string.copy()
@@ -29,16 +30,17 @@ def generate_graph_from_graphic_string(A):
     list.sort(A, reverse=True)
     n = len(A)
     matrix = [[0 for i in range(n)] for j in range(n)]
+    mod_A = [[i, A[i]] for i in range(n)]
 
-    j = 0
-    while A[j] > 0:
-        for i in range(n):
-            if (i < j or (i == n - 1 and j == 0)) and A[i] > 0:
-                matrix[i][j] = 1
-                matrix[j][i] = 1
-                A[i] = A[i] - 1
-                A[j] = A[j] - 1
-        j = (j + 1) % n
+    while sum([n[1] for n in mod_A]):
+        list.sort(mod_A, key=lambda x: x[1], reverse=True)
+        for i in range(1, n):
+            if matrix[mod_A[0][0]][mod_A[i][0]] == 0:
+                matrix[mod_A[0][0]][mod_A[i][0]] = 1
+                matrix[mod_A[i][0]][mod_A[0][0]] = 1
+                mod_A[i][1] = mod_A[i][1] - 1
+                mod_A[0][1] = mod_A[0][1] - 1
+                break
 
     graph = Graph.create_graph_representation("adjacency_matrix", matrix)
     return graph
@@ -50,4 +52,6 @@ if __name__ == "__main__":
     B = [4, 4, 3, 1, 2]
     
     graph = generate_graph_from_graphic_string(A)
+    plot_graph(graph)
+    randomize_edges(graph, 5)
     plot_graph(graph)
