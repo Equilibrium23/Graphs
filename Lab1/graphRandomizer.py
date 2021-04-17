@@ -38,7 +38,7 @@ def generate_Gnp_graph(number_of_vertexes, probability):
     matrix = [[0 for i in range(number_of_vertexes)] for j in range(number_of_vertexes)]
     for i in range(number_of_vertexes):
         for j in range(number_of_vertexes):
-            if j < i and random.randint(0, 100) < probability:
+            if j < i and random.randint(0, 100) < probability*100:
                 matrix[i][j] = 1
             matrix[j][i] = matrix[i][j]
     
