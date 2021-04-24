@@ -9,11 +9,11 @@ from if_eulerian_graph import check_if_eulerian
 
 from random import randrange
 
-def generate_vertex_degrees(vertex_count):
+def generate_vertex_degrees(vertex_count, step = 2):
 	vertex_degrees = []
 
 	for i in range(vertex_count):
-		vertex_degrees.append(randrange(2, vertex_count, 2))
+		vertex_degrees.append(randrange(step, vertex_count, step))
 
 	return vertex_degrees
 
