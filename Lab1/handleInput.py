@@ -22,7 +22,7 @@ def is_adjacency_matrix(graph_matrix):
             if graph_matrix[i][i] != 0:
                 zeros_on_main_diagonal = False
 
-    return len(graph_matrix) == len(graph_matrix[0]) and zeros_on_main_diagonal:
+    return len(graph_matrix) == len(graph_matrix[0]) and zeros_on_main_diagonal
 
 
 def check_type_of_input(graph_input):
