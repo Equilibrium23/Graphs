@@ -5,7 +5,8 @@ class Graph:
     def create_graph_representation(representation_type, graph_input):
         if representation_type == "adjacency_list":
             neighborhood_of_vertices  = [list(map(int, line.split(". ")[1].split(" "))) for line in graph_input]
-            return Graph(representation_type, {vertex:neighborhood_of_vertices[vertex] for vertex in range(len(neighborhood_of_vertices))})
+            vertices = [ int(line.split(". ")[0]) for line in graph_input ]
+            return Graph(representation_type, {vertices[vertex]:neighborhood_of_vertices[vertex] for vertex in range(len(neighborhood_of_vertices))})
         elif type(graph_input[0]) is str:
             return Graph(representation_type, [list(map(int, line.split(" "))) for line in graph_input])
         else:
@@ -125,7 +126,7 @@ class Graph:
         print(self.representation_type)
         if self.representation_type == "adjacency_list":
             for node in range(len(self.graph_representation)):
-                print(node + 1, end = '. ')
+                print(node, end = '. ')
                 for neighbor in self.graph_representation[node]:
                     print(neighbor, end = ' ')
                 print()
