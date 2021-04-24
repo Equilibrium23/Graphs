@@ -12,10 +12,7 @@ def is_incidence_matrix(graph_matrix):
         if sum(row[i] for row in graph_matrix) != 2:
             sum_of_each_column_equals_2 = False
 
-    if len(graph_matrix) != len(graph_matrix[0]) and sum_of_each_column_equals_2:
-        return True
-    else:
-        return False
+    return len(graph_matrix) != len(graph_matrix[0]) and sum_of_each_column_equals_2
     
 
 def is_adjacency_matrix(graph_matrix):
@@ -25,10 +22,8 @@ def is_adjacency_matrix(graph_matrix):
             if graph_matrix[i][i] != 0:
                 zeros_on_main_diagonal = False
 
-    if len(graph_matrix) == len(graph_matrix[0]) and zeros_on_main_diagonal:
-        return True
-    else:
-        return False
+    return len(graph_matrix) == len(graph_matrix[0]) and zeros_on_main_diagonal:
+
 
 def check_type_of_input(graph_input):
     if len(graph_input) > 1:
