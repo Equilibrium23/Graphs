@@ -3,23 +3,46 @@ sys.path.append('../')
 from Lab1.graph import Graph
 from Lab1.plot import plot_graph
 from Lab2.task2 import is_graphic_string, generate_graph_from_graphic_string
-from Lab2.euler_graph_handler import generate_vertex_degrees
 
 from random import randrange
 
-def generate_graphic_string(vertex_count):
-	vertex_degrees = generate_vertex_degrees(vertex_count, 1)
 
-	while is_graphic_string(vertex_degrees) is False:
-		vertex_degrees = generate_vertex_degrees(vertex_count, 1)
+def create_tree(vertexes):
+	vertex_count = len(vertexes.graph_representation)
 
-	return vertex_degrees
+	for row in range(1, vertex_count):
+		column = randrange(0, row)
+		vertexes.graph_representation[row][column] = 1
+		vertexes.graph_representation[column][row] = 1
 
-def generate_connected_graph(max_vertex_count):
+	return vertexes
+
+
+def make_additional_connections(graph):
+	connections = sum([sum(row) for row in graph.graph_representation]) / 2
+	vertex_count = len(graph.graph_representation)
+	max_connections = vertex_count * (vertex_count - 1) / 2
+
+	all_connections = randrange(connections, max_connections)
+	needed_connections = all_connections - connections
+
+	while needed_connections:
+		row = randrange(0, vertex_count)
+		column = randrange(0, vertex_count)
+		if row != column and graph.graph_representation[row][column] == 0:
+			graph.graph_representation[row][column] = 1
+			graph.graph_representation[column][row] = 1
+		needed_connections -= 1
+
+	return graph
+
+
+def _generate_connected_graph(max_vertex_count):
 	vertex_count = randrange(2, max_vertex_count)
-	graphic_string = generate_graphic_string(vertex_count)
+	vertex_degrees = [0 for i in range(max_vertex_count)]
 
-	return generate_graph_from_graphic_string(graphic_string)
+	return make_additional_connections(create_tree(generate_graph_from_graphic_string(vertex_degrees)))
+
 
 def add_connection_weights(graph, min, max):
 	graph.change_graph_representation_to("adjacency_matrix")
@@ -32,11 +55,13 @@ def add_connection_weights(graph, min, max):
 				graph.graph_representation[row][column] = weight
 				graph.graph_representation[column][row] = weight
 
-def main():
-	graph = generate_connected_graph(15)
+
+def generate_connected_graph(max_vertex_count, min_weight, max_weight):
+	graph = _generate_connected_graph(max_vertex_count)
 	plot_graph(graph)
-	add_connection_weights(graph, 1, 10)
+	add_connection_weights(graph, min_weight, max_weight)
 	graph.print_graph_representation()
 
+
 if __name__ == "__main__":
-	main()
+	generate_connected_graph(5, 1, 10)
