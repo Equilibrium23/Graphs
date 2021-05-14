@@ -32,12 +32,12 @@ def plot_graph(graph, labels = []):     # aby kolory dla etykiet zadzialaly trze
             ax.plot([x, x2], [y, y2], color='gray')
 
         if(len(labels) == number_of_nodes):
-            color_index = labels[count]
+            color_index = labels[count] - 1
         else:
             color_index = 0
     
         node_circle = plt.Circle((x, y), 0.5, color=node_color[color_index])
-        ax.text(x - 0.2, y - 0.2, f'{count+1}')
+        ax.text(x - 0.2, y - 0.2, f'{count}')
         ax.add_patch(node_circle)
     
     plt.show()
