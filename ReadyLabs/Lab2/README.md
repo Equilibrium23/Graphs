@@ -23,8 +23,14 @@ pip install -r requirements.txt
 -
 
 #### Zad 3
--Uruchomienie: python task3.py
-
+- Uruchomienie: python task3.py 
+- Graf wejściowy zostaje wylosowany za pomocą funcji z zestawu 1
+- funckja: find_connected_components(G: Graph) znajduje wspolne skladowe w grafie a następnie
+  wypisuje jei rysuje graf (kolory dla różnych składowych są losowe)
+- Można też wywołać funckję: components(G: Graph) z pliku: ./utils/connected_components.py, 
+  która zwraca tablicę o dlugosci ilości wirzchołków, gdzie każdy element jest etykietą [1, n] 
+  do składowej (n - ilość składowych)
+  Uwaga: graf G w funkcji components(G: Graph) musi mieć typ: GraphRepresentationType.ADJACENCY_LIST
 
 
 #### Zad 4
