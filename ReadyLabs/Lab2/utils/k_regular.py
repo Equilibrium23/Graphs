@@ -7,10 +7,11 @@ from utils.graphic_string import is_graphic_string, generate_graph_from_graphic_
 from random import randrange
 
 def generate_vertex_count(k):
-	vertex_count = randrange(k + 1, 10)
+	max_degree = 10
+	vertex_count = randrange(k + 1, max_degree)
 
 	while (vertex_count * k) % 2:
-		vertex_count = randrange(k + 1, 10)
+		vertex_count = randrange(k + 1, max_degree)
 
 	return vertex_count 
 
