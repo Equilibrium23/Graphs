@@ -11,6 +11,7 @@ class Graph:
     def __init__(self, representation_type : GraphRepresentationType, graph_representation):
         self.representation_type = representation_type
         self.graph_representation = graph_representation
+        self.graph_weights = []
     
     def change_graph_representation_to(self, new_representation_type : GraphRepresentationType):
         if self.representation_type != new_representation_type:
