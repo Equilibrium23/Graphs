@@ -8,6 +8,7 @@ def create_adjacency_matrix_from_edges_list(edges_list, number_of_vertexes, numb
     matrix = [[0 for i in range(number_of_vertexes)] for j in range(number_of_vertexes)]
     for random_index in random_indexes:
         matrix[edges_list[random_index][0]][edges_list[random_index][1]] = 1
+        matrix[edges_list[random_index][1]][edges_list[random_index][0]] = 1
     return matrix
 
 def generate_Gnl_graph(number_of_vertexes : int, number_of_edges : int):
