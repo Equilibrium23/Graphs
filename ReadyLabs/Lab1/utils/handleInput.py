@@ -48,7 +48,7 @@ def check_type_of_input(graph_input):
 def parse_graph_input(representation_type : GraphRepresentationType, graph_input):
     
     if representation_type == GraphRepresentationType.ADJACENCY_LIST:
-        neighborhood_of_vertices  = [list(map(int, line.split(". ")[1].split(" "))) for line in graph_input]
+        neighborhood_of_vertices  = [list(map(int, line.split(". ")[1].split(" "))) if line.split(". ")[1] != "\n" else [] for line in graph_input]
         parsed_graph_input = {vertex:neighborhood_of_vertices[vertex] for vertex in range(len(neighborhood_of_vertices))}
 
     elif representation_type == GraphRepresentationType.ADJACENCY_MATRIX or representation_type == GraphRepresentationType.INCIDENCE_MATRIX:
