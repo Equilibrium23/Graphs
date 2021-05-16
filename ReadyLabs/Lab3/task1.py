@@ -10,4 +10,4 @@ if __name__ == "__main__":
 	graph.add_connection_weights(1, 10)
 
 	plot_graph(graph)
-	graph.print_weights();
+	graph.print_weights()

@@ -1,7 +1,7 @@
 import sys
 sys.path.append('../')
-from Lab1.graph import Graph
-from tu_wstaw_nowy_plik import calculate_distance_matrix
+from Lab1.utils.graph import Graph
+from .dijkstra import calculate_distance_matrix
 
 def find_center_of_graph(G: Graph):
     m = calculate_distance_matrix(G)
