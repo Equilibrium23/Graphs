@@ -21,7 +21,7 @@ def print_dijkstra(G: Graph, s):
 
     for v in range(len(p_s)):
         path = []
-        print('d({}) = {} ===> '.format(v, d_s[v]), end='')
+        print('d({}) = {:>4} ===> '.format(v, d_s[v]), end='')
 
         currNode = v
         path.append(currNode)
