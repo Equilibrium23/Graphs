@@ -20,14 +20,15 @@ def swap_two_pairs_of_nodes(graph: Graph):
         c, d = get_random_two_connected_nodes(graph)
         matrix = graph.graph_representation
 
-        if(a != d and b != c and matrix[a][d] == 0 and matrix[b][c] == 0 and
-           a != c and b != d and matrix[a][c] == 0 and matrix[b][d] == 0 ):
+        if(a != d and b != c and a != c and b != d and matrix[a][d] == 0 and matrix[b][c] == 0):
             matrix[a][b] = matrix[b][a] = matrix[c][d] = matrix[d][c] = 0
             matrix[a][d] = matrix[d][a] = matrix[c][b] = matrix[b][c] = 1
             return
 
-def randomize_edges(graph: Graph, n: int):
+def randomize_edges(graph: Graph, number_of_randomisations: int):
+    if len(graph.graph_representation) < 4:
+        raise Exception("Minimal size of graph == 4")
     graph.change_to_adjacency_matrix()
-    for i in range(n):
+    for i in range(number_of_randomisations):
         swap_two_pairs_of_nodes(graph)
     
