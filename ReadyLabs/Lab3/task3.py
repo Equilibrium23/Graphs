@@ -8,6 +8,9 @@ from utils.dijkstra import calculate_distance_matrix
 
 
 def print_distance_matrix(G: Graph):
+    old_representation = G.representation_type
+    graph.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
+
     m = calculate_distance_matrix(G)
 
     print("\nMacierz odleglosci:")
@@ -16,6 +19,8 @@ def print_distance_matrix(G: Graph):
         for j in range(len(m[i])):
             print('{:>6}'.format(m[i][j]), end='')
         print()
+
+    G.change_graph_representation_to(old_representation)
 
 
     

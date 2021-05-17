@@ -2,8 +2,11 @@ import sys
 sys.path.append('../')
 import numpy as np
 from Lab1.utils.graph import Graph
+from Lab1.utils.handleInput import *
 
 def calculate_distance_matrix(G: Graph):
+    if(G.representation_type != GraphRepresentationType.ADJACENCY_MATRIX):
+        raise Exception('representation_type must be: ADJACENCY_MATRIX')
     if(len(G.graph_weights) == 0):
         raise Exception('Graf nie ma wag lub wierzcholkow!!!')
 
@@ -19,6 +22,8 @@ def calculate_distance_matrix(G: Graph):
 
 
 def dijkstra(G: Graph, s):
+    if(G.representation_type != GraphRepresentationType.ADJACENCY_MATRIX):
+        raise Exception('representation_type must be: ADJACENCY_MATRIX')
     if(len(G.graph_weights) == 0):
         raise Exception('Graf nie ma wag lub wierzcholkow!!!')
 
