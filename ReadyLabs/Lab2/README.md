@@ -38,9 +38,7 @@ pip install -r requirements.txt
 - Skrypt generuje graf za pomocą funkcji generate_random_eulerian_graph(min, max).
  Jego argumenty to kolejno: minimalna oraz maksymalna ilość wierzchołków.
  Obie liczby powinny być dodatnimi liczbami całkowitymi. Spełniony powinien być warunek min < max.
- Wartość max powinna być dobrana z umiarem, ponieważ Python nie jest zbyt wydajnym językiem, 
- w związku z czym podanie zbyt dużej ilości wierzchołków może spowodować czekanie w nieskończoność.
-- Za każdym razem sprawdzana jest poprawność generowania grafu Eulerowskiego przy pomocy funkcji is_euler,
+- W skrypcie za każdym razem sprawdzana jest poprawność generowania grafu Eulerowskiego przy pomocy funkcji is_euler,
  która oczekuje jako argumentu zmiennej typu Graph
 
 
@@ -48,6 +46,5 @@ pip install -r requirements.txt
 - Uruchomienie: python task5.py
 - Skrypt przygotowuje graf k-regularny przy pomocy funkcji generate_k_regular_graph(k).
  Jej argumentem jest liczba wymaganych połączeń, która powinna mieścić się w przedziale (0, 10).
- W przypoadku kiedy potrzeba wygenerować graf k-regularny o większej ilości połączęń
- konieczna byłaby zamiana wartości max_degree w funkcji generate_vertex_count(k), 
- jednak nie jest to polecane.
+- Możliwe jest również wywołanie funkcji z dwoma argumentami: k oraz vertex_count.
+ Drugi argument odpowiada za liczbę wierzchołków z jakich powinien składać się wygenerowany graf.
