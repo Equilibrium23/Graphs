@@ -31,6 +31,7 @@ def generate_k_regular_graph(k, vertex_count = 0):
 		while is_degree_sequence(degree_sequence) is False:
 			vertex_count, degree_sequence = generate_graph_properties(k)
 	
+	graph = generate_graph_from_degree_sequence(degree_sequence)
 	print(f"generated {k}_regular graph")
 
-	return generate_graph_from_degree_sequence(degree_sequence)
+	return graph
