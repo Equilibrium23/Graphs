@@ -1,8 +1,8 @@
 # Projekt 2
 
-## Zesp�: Grafy koralowe
-- Wojciech J�draski
-- Gabriel Nale�nik
+## Zespół: Grafy koralowe
+- Wojciech Jędraski
+- Gabriel Naleźnik
 - Karol Sawicki
 - Piotr Harmuszkiewicz
 
@@ -13,12 +13,12 @@ pip install -r requirements.txt
 
 #### Zad 1
 - Uruchomienie: python task1.py 
-- Graf sp�jny tworzony jest przy pomocy funckji generate_connected_graph(max_vertex_count),
-kt�ra to funkcja jako argumentu oczekuje dodatniej liczby ca�kowitej.
-- Wagi do utworzonego grafu dodawane s� przy pomocy metody add_connection_weights(min, max),
-kt�ra to przyjmuje argumenty b�d�ce liczbami ca�kowitymi.
-- Argumenty funkcji add_connection_weights powinny by� dodatnie, aby unikn�� stworzenia
-b��dnego grafu, posiadaj�cego cykl ujemnych po��cze�
+- Graf spójny tworzony jest przy pomocy funckji generate_connected_graph(max_vertex_count),
+ która to funkcja jako argumentu oczekuje dodatniej liczby całkowitej.
+- Wagi do utworzonego grafu dodawane są przy pomocy metody add_connection_weights(min, max),
+ która to przyjmuje argumenty będące liczbami całkowitymi.
+- Argumenty funkcji add_connection_weights powinny być dodatnie, aby uniknąć stworzenia
+ błędnego grafu, posiadającego cykl ujemnych połączeń
 
 #### Zad 2
 - Uruchomienie: python task2.py 
