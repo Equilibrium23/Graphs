@@ -22,6 +22,7 @@ def dijkstra(G: Graph, s):
     if(len(G.graph_weights) == 0):
         raise Exception('Graf nie ma wag lub wierzcholkow!!!')
 
+    gr = G.graph_representation
     w = G.graph_weights
     nodeAmount = len(w)
 
@@ -37,7 +38,7 @@ def dijkstra(G: Graph, s):
         u = _find_min_u(S, d_s)
         S.append(u)
         for v in range(len(w[u])):
-            if(w[u][v] != 0 and v not in S):
+            if(gr[u][v] != 0 and v not in S):
                 _relax(u, v, w, d_s, p_s)
 
     return p_s, d_s
