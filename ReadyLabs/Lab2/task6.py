@@ -24,17 +24,9 @@ class HamiltonChecker:
             else:
                 self.hamiltonian_flag = True
                 if self.stack.bottom() in self.graph.graph_representation[vertex]:
-                    is_hamiltonian_cycle = True
                     self.stack.push(self.stack.bottom())
                 self.hamiltonianPath = self.stack.getListFromStack()
             self.stack.pop()
-
-    def reset(self):
-        self.hamiltonian_flag = False
-        self.visited = [False]*len(graph.graph_representation)
-        self.stack = Stack()
-        self.hamiltonianPath = []
-
 
     def is_hamiltionian(self):
         return {self.hamiltonian_flag : self.hamiltonianPath}
@@ -50,12 +42,12 @@ if __name__ == "__main__":
             graph = Graph(representation_type, parsed_graph_input)
 
             checker = HamiltonChecker(graph)
-            checker.check_hamilton(3)
+            checker.check_hamilton(0)
             result = checker.is_hamiltionian()
             
             for is_hamiltonian,hamiltonian_path in result.items():
                 print(is_hamiltonian)
-                print(hamiltonian_path)
+                print([x for x in hamiltonian_path])
 
         except BadInputException:
             print(BadInputException)
