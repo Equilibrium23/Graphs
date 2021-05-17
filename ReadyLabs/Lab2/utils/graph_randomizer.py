@@ -20,7 +20,8 @@ def swap_two_pairs_of_nodes(graph: Graph):
         c, d = get_random_two_connected_nodes(graph)
         matrix = graph.graph_representation
 
-        if(a != d and b != c and matrix[a][d] == 0 and matrix[b][c] == 0):
+        if(a != d and b != c and matrix[a][d] == 0 and matrix[b][c] == 0 and
+           a != c and b != d and matrix[a][c] == 0 and matrix[b][d] == 0 ):
             matrix[a][b] = matrix[b][a] = matrix[c][d] = matrix[d][c] = 0
             matrix[a][d] = matrix[d][a] = matrix[c][b] = matrix[b][c] = 1
             return

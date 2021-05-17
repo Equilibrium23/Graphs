@@ -15,33 +15,27 @@ class HamiltonChecker:
     def check_hamilton(self, vertex):
         if not self.hamiltonian_flag:
             self.stack.push(vertex)
+            self.visited[vertex] = True
             if self.stack.size() < len(self.graph.graph_representation):
-                self.visited[vertex] = True
                 for neighbour in self.graph.graph_representation[vertex]:
                     if self.visited[neighbour] == False:
                         self.check_hamilton(neighbour)
-                self.visited[vertex] = False
+                if self.stack.size() < len(self.graph.graph_representation):
+                    self.visited[self.stack.pop()] = False
             else:
-                self.hamiltonian_flag = True
                 if self.stack.bottom() in self.graph.graph_representation[vertex]:
-                    is_hamiltonian_cycle = True
+                    self.hamiltonian_flag = True
                     self.stack.push(self.stack.bottom())
-                self.hamiltonianPath = self.stack.getListFromStack()
-            self.stack.pop()
-
-    def reset(self):
-        self.hamiltonian_flag = False
-        self.visited = [False]*len(graph.graph_representation)
-        self.stack = Stack()
-        self.hamiltonianPath = []
-
+                    self.hamiltonianPath = self.stack.getListFromStack()
+                else:
+                    self.visited[self.stack.pop()] = False
 
     def is_hamiltionian(self):
         return {self.hamiltonian_flag : self.hamiltonianPath}
     
 
 if __name__ == "__main__":
-    with open ('input/input6.txt', 'r') as graph_input:
+    with open ('input/input6_2.txt', 'r') as graph_input:
         try:
             graph_input = graph_input.readlines()
             representation_type = check_type_of_input(graph_input)
@@ -50,7 +44,7 @@ if __name__ == "__main__":
             graph = Graph(representation_type, parsed_graph_input)
 
             checker = HamiltonChecker(graph)
-            checker.check_hamilton(3)
+            checker.check_hamilton(0)
             result = checker.is_hamiltionian()
             
             for is_hamiltonian,hamiltonian_path in result.items():

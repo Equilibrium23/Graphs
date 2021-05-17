@@ -4,8 +4,8 @@ sys.path.append('../')
 from Lab1.utils.graph import Graph, GraphRepresentationType
 from Lab1.utils.plot import plot_graph
 
-def is_graphic_string(graphic_string: List):
-    A = graphic_string.copy()
+def is_degree_sequence(degree_sequence: List):
+    A = degree_sequence.copy()
     list.sort(A)
     while True:
         for node in A:
@@ -23,8 +23,8 @@ def is_graphic_string(graphic_string: List):
         A[0] = 0
         list.sort(A, reverse=True)
 
-def generate_graph_from_graphic_string(A: List):
-    if not is_graphic_string(A):
+def generate_graph_from_degree_sequence(A: List):
+    if not is_degree_sequence(A):
         raise Exception("To nie jest ciag graficzny")
 
     list.sort(A, reverse=True)
