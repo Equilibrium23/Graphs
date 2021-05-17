@@ -1,7 +1,7 @@
 import sys
 sys.path.append('../')
 from Lab1.utils.graph import Graph, GraphRepresentationType
-from Lab2.utils.graphic_string import is_graphic_string, generate_graph_from_graphic_string
+from Lab2.utils.degree_sequence import is_degree_sequence, generate_graph_from_degree_sequence
 
 from random import randrange
 
@@ -40,4 +40,4 @@ def generate_connected_graph(max_vertex_count):
 	vertex_count = randrange(2, max_vertex_count)
 	vertex_degrees = [0 for i in range(max_vertex_count)]
 
-	return make_additional_connections(create_tree(generate_graph_from_graphic_string(vertex_degrees)))
+	return make_additional_connections(create_tree(generate_graph_from_degree_sequence(vertex_degrees)))
