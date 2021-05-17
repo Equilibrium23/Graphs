@@ -38,8 +38,11 @@ pip install -r requirements.txt
 - Skrypt generuje graf za pomocą funkcji generate_random_eulerian_graph(min, max).
  Jego argumenty to kolejno: minimalna oraz maksymalna ilość wierzchołków.
  Obie liczby powinny być dodatnimi liczbami całkowitymi. Spełniony powinien być warunek min < max.
-- W skrypcie za każdym razem sprawdzana jest poprawność generowania grafu Eulerowskiego przy pomocy funkcji is_euler,
- która oczekuje jako argumentu zmiennej typu Graph
+- W skrypcie za każdym razem sprawdzana jest poprawność generowania grafu Eulerowskiego przy pomocy funkcji 
+  check_if_eulerian, która oczekuje jako argumentu zmiennej typu Graph. Funkcja przechodzi przez krawędzie
+  i usuwa te przez które przeszła (wymaganiem dotyczącym wyboru krawędzi jest omijanie mostów - przechodź
+  przez most jeśli nie ma innej możliwości). Gdy algorytm dotrze do miejsca w którym nie ma żadnej innej
+  drogi sprawdza czy jest w wierzchołku startowym i czy w grafie zostały jakieś krawędzie.
 
 
 #### Zad 5
