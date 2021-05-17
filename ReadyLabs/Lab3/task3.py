@@ -5,14 +5,17 @@ from Lab1.utils.plot import plot_graph
 from Lab1.utils.handleInput import *
 from utils.connected_graph import *
 from utils.dijkstra import calculate_distance_matrix
-from copy import copy, deepcopy
 
 
 def print_distance_matrix(G: Graph):
     m = calculate_distance_matrix(G)
 
+    print("\nMacierz odleglosci:")
+
     for i in range(len(m)):
-        print(m[i])
+        for j in range(len(m[i])):
+            print('{:>6}'.format(m[i][j]), end='')
+        print()
 
 
     
