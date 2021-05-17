@@ -11,6 +11,9 @@ from copy import copy, deepcopy
 
 
 def print_dijkstra(G: Graph, s):
+    old_representation = G.representation_type
+    graph.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
+
     p_s, d_s = dijkstra(G, s)
     w = G.graph_weights
 
@@ -34,6 +37,8 @@ def print_dijkstra(G: Graph, s):
         print(path)
 
     plot_graph(graph)
+
+    G.change_graph_representation_to(old_representation)
 
 
 

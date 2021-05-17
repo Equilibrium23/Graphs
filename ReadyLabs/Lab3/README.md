@@ -28,7 +28,8 @@ b��dnego grafu, posiadaj�cego cykl ujemnych po��cze�
 - Można użyć funkcji dijkstra(G: Graph, s), z pliku ./utils/dijkstra.py, aby otrzymać dwie
   tablice: odległość do i-tego wierzchołka i tablicę z następnym krokie (do którego 
   wierzchołka przejść, aby dostać się do wierzchołka s)
-  (wymaganie co do grafu takie jak w punkcie wyżej)
+  (wymaganie co do grafu takie jak w punkcie wyżej ORAZ graf musi mieć typ: 
+  GraphRepresentationType.ADJACENCY_MATRIX)
 
 
 #### Zad 3
@@ -37,4 +38,5 @@ b��dnego grafu, posiadaj�cego cykl ujemnych po��cze�
   macierz odległości. Graf musi mieć zapisane wagi krawędzi. Funkcja oblicza macierz
   odległości i wypisuje ją
 - Można użyć funkcji calculate_distance_matrix(G: Graph), z pliku ./utils/dijkstra.py, aby 
-  otrzymać samą macierz (wymaganie co do grafu takie jak w punkcie wyżej)
+  otrzymać samą macierz (wymaganie co do grafu takie jak w punkcie wyżejORAZ graf musi mieć 
+  typ: GraphRepresentationType.ADJACENCY_MATRIX)
