@@ -34,9 +34,6 @@ def johnson(graph: Graph):
             if new_G.graph_representation[u][v] == 1:
                 new_G.graph_weights[u][v] += int(h[u] - h[v])
 
-    new_G.print_graph_representation()
-    new_G.print_weights()
-
     new_G.graph_weights.pop()
     new_G.graph_representation.pop()
     for i in range(n_of_nodes):
@@ -44,9 +41,6 @@ def johnson(graph: Graph):
         new_G.graph_representation[i].pop()
 
     graph.graph_weights = new_G.graph_weights
-    graph.graph_representation = new_G.graph_representation
-    graph.print_graph_representation()
-    graph.print_weights()
     D = [[0 for i in range(n_of_nodes)] for j in range(n_of_nodes)]
     for u in range(n_of_nodes):
         _, d_s = dijkstra(graph, u)
