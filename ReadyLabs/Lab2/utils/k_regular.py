@@ -21,10 +21,16 @@ def generate_graph_properties(k):
 	return vertex_count, string
 
 
-def generate_k_regular_graph(k):
-	vertex_count, degree_sequence = generate_graph_properties(k)
+def generate_k_regular_graph(k, vertex_count = 0):
 
-	while is_degree_sequence(degree_sequence) is False:
+	if(vertex_count):
+		degree_sequence = [k for i in range(vertex_count)]
+	else:
 		vertex_count, degree_sequence = generate_graph_properties(k)
+
+		while is_degree_sequence(degree_sequence) is False:
+			vertex_count, degree_sequence = generate_graph_properties(k)
 	
+	print(f"generated {k}_regular graph")
+
 	return generate_graph_from_degree_sequence(degree_sequence)
