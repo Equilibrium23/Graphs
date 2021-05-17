@@ -21,15 +21,10 @@ def generate_graph_properties(k):
 	return vertex_count, string
 
 
-def generate_k_regular_graph(k, vertex_count = 0):
-	if(vertex_count):
-		graphic_string = [k for i in range(vertex_count)]
-	else:
+def generate_k_regular_graph(k):
+	vertex_count, graphic_string = generate_graph_properties(k)
+
+	while is_graphic_string(graphic_string) is False:
 		vertex_count, graphic_string = generate_graph_properties(k)
-
-		while is_graphic_string(graphic_string) is False:
-			vertex_count, graphic_string = generate_graph_properties(k)
-
-	print(f"generated {k}_regular graph")
 	
 	return generate_graph_from_graphic_string(graphic_string)
