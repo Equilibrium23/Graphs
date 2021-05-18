@@ -1,5 +1,5 @@
 from utils.flow_network import generate_network
-from utils.plot import plot_graph
+from utils.plot import plot_digraph
 
 if __name__ == '__main__':
 

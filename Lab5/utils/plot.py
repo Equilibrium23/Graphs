@@ -28,11 +28,6 @@ def plot_digraph(digraph, labels = []):
 	for count, node in graph.graph_representation.items():
 		x = radius*cos(radians((count/number_of_nodes*360)))
 		y = radius*sin(radians((count/number_of_nodes*360)))
-		
-		for neighbor in graph.graph_representation[count]:
-			x2 = radius*cos(radians(((neighbor)/number_of_nodes*360)))
-			y2 = radius*sin(radians(((neighbor)/number_of_nodes*360)))
-			plt.arrow(x, y, x2 - x, y2 - y, width = 0.05, length_includes_head = True)
 
 		if(len(labels) == number_of_nodes):
 			color_index = labels[count] - 1
@@ -40,7 +35,16 @@ def plot_digraph(digraph, labels = []):
 			color_index = 0
 	
 		node_circle = plt.Circle((x, y), 0.5, color=node_color[color_index])
-		ax.text(x - 0.2, y - 0.2, f'{count}')
+		ax.text(x + x*0.2, y + y*0.2, f'{count}')
 		ax.add_patch(node_circle)
-	
+
+	#plot arrows
+	for count, node in graph.graph_representation.items():
+		x = radius*cos(radians((count/number_of_nodes*360)))
+		y = radius*sin(radians((count/number_of_nodes*360)))
+		for neighbor in graph.graph_representation[count]:
+			x2 = radius*cos(radians(((neighbor)/number_of_nodes*360)))
+			y2 = radius*sin(radians(((neighbor)/number_of_nodes*360)))
+			plt.arrow(x, y, x2 - x, y2 - y, width = 0.05, length_includes_head = True, head_width = 0.3)
+
 	plt.show()
