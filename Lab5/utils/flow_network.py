@@ -8,17 +8,40 @@ def generate_layers(N):
 	return layers_sizes
 
 
+def connect_first_layer(graph, layer_size):
+	for i in range(1, layer_size + 1):
+		graph.graph_representation[0][i] = 1
+
+	return layer_size, layer_size
+
+
+def connect_last_layer(graph, layer_size):
+	vertex_count = len(graph.graph_representation)
+	for i in range(1, layer_size + 1):
+		graph.graph_representation[vertex_count - i - 1][vertex_count - 1] = 1
+
+
+def connect_layers(graph, layer_size, last_connected, prior_layer_size):
+	for i in range(last_connected + 1, layer_size + last_connected + 1):
+		j = randrange(last_connected - prior_layer_size + 1, last_connected + 1)
+		graph.graph_representation[j][i] = 1
+	for j in range(last_connected - prior_layer_size + 1, last_connected + 1):
+		i = randrange(last_connected + 1, layer_size + last_connected + 1)
+		graph.graph_representation[j][i] = 1
+
+
 def make_base_connections(graph, layers_sizes):
-	all_vertexes = 0;
-	old_layer = 0
-	for vertexes in layers_sizes:
-		for i in range(vertexes):
-			for j in range(old_layer):
-				if(i != j):
-					graph.graph_representation[i + all_vertexes][j + all_vertexes] = 1
-		old_layer = vertexes
-		all_vertexes += vertexes
+	last_connected, prior_layer_size = connect_first_layer(graph, layers_sizes[0])
+
+	for i in range(1, len(layers_sizes)):
+		connect_layers(graph, layers_sizes[i], last_connected, prior_layer_size)
+		prior_layer_size = layers_sizes[i]
+		last_connected += layers_sizes[i]
+
+	connect_last_layer(graph, layers_sizes[len(layers_sizes) - 1])
+
 	return graph
+
 
 def generate_base_network(layers_sizes):
 	vertex_count = sum(layers_sizes) + 2
@@ -28,8 +51,38 @@ def generate_base_network(layers_sizes):
 	return make_base_connections(graph, layers_sizes)
 
 
+def is_connection_legal(graph, i, j):
+	return graph.graph_representation[i][j] == 0 and graph.graph_representation[j][i] == 0
+
+
+def black_box():
+	return randrange(1, 15) % 2
+
+
+def add_one_connection(graph, N):
+	i = randrange(1, N + 1)
+	j = randrange(1, N + 1)
+	if(i != j and is_connection_legal(graph, i, j)):
+		if(black_box()):
+			graph.graph_representation[i][j] = 1
+		else:
+			graph.graph_representation[j][i] = 1
+		return True
+	return False
+
+
+def make_additional_connections(network, N):
+	needed_connections = N
+	while(needed_connections > 0):
+		if(add_one_connection(network, N)):
+			needed_connections -= 1
+	
+	return network
+
+
 def generate_network(N : int):
 	layers_sizes = generate_layers(N)
 	graph = generate_base_network(layers_sizes)
+	graph = make_additional_connections(graph, N)
 	
 	return graph
