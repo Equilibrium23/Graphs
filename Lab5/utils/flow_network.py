@@ -60,8 +60,9 @@ def black_box():
 
 
 def add_one_connection(graph, N):
-	i = randrange(1, N + 1)
-	j = randrange(1, N + 1)
+	vertex_count = len(graph.graph_representation) - 2
+	i = randrange(1, vertex_count)
+	j = randrange(1, vertex_count)
 	if(i != j and is_connection_legal(graph, i, j)):
 		if(black_box()):
 			graph.graph_representation[i][j] = 1
@@ -86,3 +87,10 @@ def generate_network(N : int):
 	graph = make_additional_connections(graph, N)
 	
 	return graph
+
+
+def generate_network_with_weights(N, min, max):
+	network = generate_network(N)
+	network.add_connection_weights(1, 10)
+
+	return network
