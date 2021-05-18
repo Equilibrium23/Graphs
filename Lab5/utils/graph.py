@@ -27,7 +27,7 @@ class Graph:
 				self.change_to_adjacency_matrix()
 
 	def change_to_adjacency_list(self):
-		if self.representation_type == GraphRepresentationType.ADJACENCY_MATRIX:
+		if self.representation_type == GraphRepresentationType.ADJACENCY_MATRIX or self.representation_type == GraphRepresentationType.DIGRAF_ADJACENCY_MATRIX:
 			self.change_to_list_from_adjacency_matrix()
 
 		if self.representation_type == GraphRepresentationType.INCIDENCE_MATRIX:
