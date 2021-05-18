@@ -5,7 +5,7 @@ from random import random
 from .graph import Graph, GraphRepresentationType
 
 
-def plot_graph(digraph, labels = []):
+def plot_digraph(digraph, labels = []):
 	graph = digraph
 	graph.change_to_adjacency_list()
 	radius = 6
