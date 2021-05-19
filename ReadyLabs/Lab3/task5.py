@@ -1,19 +1,33 @@
 def minimum_not_visited_edge(edges, visited):
+    print
     for edge in edges:
-        if edge[0] not in visited:
+        # sprawdzenie czy krawedz z drzewa T laczy sie drzewem W
+        if edge[0] not in visited: 
             return edge
-    return [-1,999] 
+    return [-1] 
 
+def filter_list(edges):
+    return [ x for x in edges if x[0] != -1 ]
 
 def prime_minimum_spanning_tree(graph, start):
+    road_weight = 0
     visited = [start]
     minimum_spanning_tree = []
     while len(visited) < len(graph):
+        # wybieram (startujac z wierzcholkow odwiedzonych) 
+        # najlzejsze krawedzie nieodwiedzone dla danych wierzcholkow
+        # [ [nast_wierz, waga, wierzch_startowy], ... ]
         min_not_visited_edges = [  minimum_not_visited_edge(graph[vertex], visited) + [vertex]  for vertex in visited ]
+        min_not_visited_edges = filter_list(min_not_visited_edges)
+
+        # Krawedz ktora bedzie dodawana do drzewa to najmniejsza ze znalezionych
         next_edge = min(min_not_visited_edges, key = lambda x : x[1])
+
+        # dodawanie
         visited.append(next_edge[0])
         minimum_spanning_tree.append([next_edge[2],next_edge[0]])
-    return minimum_spanning_tree
+        road_weight += next_edge[1]
+    return (minimum_spanning_tree,road_weight)
 
 def find_min_and_max_vertex(graph):
     min_vertex = graph[0][0]
@@ -45,12 +59,13 @@ def parse_wage_graph(graph_input):
     return [parsed_graph,min_max_vertex[0],min_max_vertex[1]]
 
 if __name__ == "__main__":
-    with open ('input/zad5.txt', 'r') as graph_input:
+    with open ('input/input5.txt', 'r') as graph_input:
         graph_data = parse_wage_graph(graph_input)
         graph = graph_data[0]
         min_vertex = graph_data[1]
         max_vertex = graph_data[2]
-        start_vertex = 1 - min_vertex
-        minimum_spanning_tree_road = prime_minimum_spanning_tree(graph, start_vertex)
-        for edge in minimum_spanning_tree_road:
+        start_vertex = 7
+        minimum_spanning_tree_road = prime_minimum_spanning_tree(graph, start_vertex - min_vertex)
+        for edge in minimum_spanning_tree_road[0]:
             print("[{},{}]".format(edge[0]+min_vertex,edge[1]+min_vertex))
+        print("Waga drogi -> {}".format(minimum_spanning_tree_road[1]))

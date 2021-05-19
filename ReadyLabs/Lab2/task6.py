@@ -31,11 +31,16 @@ class HamiltonChecker:
                     self.visited[self.stack.pop()] = False
 
     def is_hamiltionian(self):
-        return {self.hamiltonian_flag : self.hamiltonianPath}
+        return (self.hamiltonian_flag , self.hamiltonianPath)
     
+    def reset(self):
+        self.hamiltonian_flag = False
+        self.visited = [False]*len(graph.graph_representation)
+        self.stack = Stack()
+        self.hamiltonianPath = []
 
 if __name__ == "__main__":
-    with open ('input/input6_2.txt', 'r') as graph_input:
+    with open ('input/input6.txt', 'r') as graph_input:
         try:
             graph_input = graph_input.readlines()
             representation_type = check_type_of_input(graph_input)
@@ -47,9 +52,8 @@ if __name__ == "__main__":
             checker.check_hamilton(0)
             result = checker.is_hamiltionian()
             
-            for is_hamiltonian,hamiltonian_path in result.items():
-                print(is_hamiltonian)
-                print(hamiltonian_path)
+            print(result[0])
+            print(result[1])
 
         except BadInputException:
             print(BadInputException)

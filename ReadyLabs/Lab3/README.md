@@ -40,3 +40,22 @@ pip install -r requirements.txt
 - Można użyć funkcji calculate_distance_matrix(G: Graph), z pliku ./utils/dijkstra.py, aby 
   otrzymać samą macierz (wymaganie co do grafu takie jak w punkcie wyżejORAZ graf musi mieć 
   typ: GraphRepresentationType.ADJACENCY_MATRIX)
+
+
+#### Zad 5
+- Uruchomienie: python task5.py 
+####### Format danych wejsciowych:
+- Wejsciowa reprezentacje grafu podajemy w pliku input/input5.txt
+- Przykladowe wejscia podane sa w pliku input/possible_inputs.txt
+
+Format pliku (wierzcholki nie musza byc indeksowane od 0):
+wierzcholek,wierzcholek,waga_krawedzi
+wierzcholek,wierzcholek,waga_krawedzi
+.
+.
+.
+
+### glowna czesc programu
+w main:
+start_vertex = x
+jako x podajemy wierzcholek od ktorego chcemy zaczac poszukiwania

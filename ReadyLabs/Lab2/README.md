@@ -51,3 +51,23 @@ pip install -r requirements.txt
  Jej argumentem jest liczba wymaganych połączeń, która powinna mieścić się w przedziale (0, 10).
 - Możliwe jest również wywołanie funkcji z dwoma argumentami: k oraz vertex_count.
  Drugi argument odpowiada za liczbę wierzchołków z jakich powinien składać się wygenerowany graf.
+
+
+#### Zad 6
+- Uruchomienie: python task6.py 
+####### Format danych wejsciowych:
+- Wejsciowa reprezentacje grafu podajemy w pliku input/input6.txt
+- Przykladowe wejscia podane sa w pliku input/possible_inputs.txt
+Lista sasiedztwa:
+- Lista MUSI byc numerowana od 0, nie moze zawierac wierzcholkow izolowanych, nieprawidlowych polaczen
+0. wierzcholek wierzcholek ... wierzcholek
+1. wierzcholek wierzcholek ... wierzcholek
+.
+.
+.
+n. wierzcholek wierzcholek ... wierzcholek 
+
+### glowna czesc programu
+checker = HamiltonChecker(graph)
+checker.check_hamilton(0) - tutaj podajemy wierzcholek od ktorego chcemy zaczac szukac cyklu hamilotna, nie jest sprawdzane podanie blednego np. nieistniejacego wierzcholka
+result = checker.is_hamiltionian()
