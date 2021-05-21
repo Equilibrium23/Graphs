@@ -20,7 +20,8 @@ pip install -r requirements.txt
 - Ciąg graficzny jest przekazywany do metod w postaci listy liczb całkowitych
 - Graf utworzony za pomocą ciągu graficznego z poprzedniego zadania jest rysowany na ekranie
   a następnie rysowany ponownie po randomizacji jego krawędzi.
--
+- Funkcja randomize_edges działa tylko dla grafów o liczbie wierzchołków większej lub równej 4.
+  W innych przypadkach rzucany jest wyjątek.
 
 #### Zad 3
 - Uruchomienie: python task3.py 
