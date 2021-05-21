@@ -9,7 +9,7 @@ from utils.dijkstra import calculate_distance_matrix
 
 def print_distance_matrix(G: Graph):
     old_representation = G.representation_type
-    graph.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
+    G.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
 
     m = calculate_distance_matrix(G)
 
