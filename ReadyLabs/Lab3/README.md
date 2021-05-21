@@ -41,6 +41,20 @@ pip install -r requirements.txt
   otrzymać samą macierz (wymaganie co do grafu takie jak w punkcie wyżejORAZ graf musi mieć 
   typ: GraphRepresentationType.ADJACENCY_MATRIX)
 
+#### Zad 4
+- Uruchomienie: python task4.py 
+- Funckja: print_distance_matrix(G: Graph), przyjmuje graf dla którego będziemy liczyć
+  macierz odległości. Graf musi mieć zapisane wagi krawędzi. Funkcja oblicza macierz
+  odległości i wypisuje ją
+- Można użyć funkcji calculate_distance_matrix(G: Graph), z pliku ./utils/dijkstra.py, aby 
+  otrzymać samą macierz (wymaganie co do grafu takie jak w punkcie wyżejORAZ graf musi mieć 
+  typ: GraphRepresentationType.ADJACENCY_MATRIX)
+- Funkcja find_center_of_graph przyjmuje graf o wymaganiach takich jak dla funkcji calculate_distance_matrix i 
+  znajduje centrum grafu, to znaczy wierzchołek, którego suma odległości do pozostałych wierzchołków jest minimalna.
+- Funkcja find_minimax_center_of_graph przyjmuje graf o wymaganiach takich jak dla funkcji calculate_distance_matrix i 
+  znajduje centrum minimax, to znaczy wierzchołek, którego odległość do najdalszego wierzchołka jest minimalna.
+- W przypadku gdy istnieje kilka centrów w grafie, funkcje find_center_of_graph i find_minimax_center_of_graph 
+  zwracają pierwsze napotkane centrum.
 
 #### Zad 5
 - Uruchomienie: python task5.py 
