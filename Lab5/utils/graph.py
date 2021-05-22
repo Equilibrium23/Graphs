@@ -142,6 +142,12 @@ class Graph:
 
 
 	def add_connection_weights(self, min, max):
+		if self.representation_type == GraphRepresentationType.DIGRAF_ADJACENCY_MATRIX:
+			self.add_connections_to_digraph(min, max)
+		else:
+			self.add_connections(min, max)
+
+	def add_connections(self, min, max):
 		self.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
 		nodes_count = len(self.graph_representation)
 
@@ -153,3 +159,14 @@ class Graph:
 					weight = randrange(min, max)
 					self.graph_weights[row][column] = weight
 					self.graph_weights[column][row] = weight
+
+
+	def add_connections_to_digraph(self, min, max):
+		nodes_count = len(self.graph_representation)
+		self.graph_weights = [[0 for i in range(nodes_count)] for j in range(nodes_count)]
+	
+		for row in range(nodes_count):
+			for column in range(row + 1, nodes_count):
+				if(self.graph_representation[row][column]):
+					weight = randrange(min, max)
+					self.graph_weights[row][column] = weight
