@@ -14,6 +14,7 @@ class Graph:
 		self.representation_type = representation_type
 		self.graph_representation = graph_representation
 		self.graph_weights = []
+		self.layer_numbers = []		# dlugosc tablicy musi byc rowna ilosci wierzcholkow w grafie (warstwy numerujemy od 0)
 	
 	def change_graph_representation_to(self, new_representation_type : GraphRepresentationType):
 		if self.representation_type != new_representation_type and self.representation_type != GraphRepresentationType.DIGRAF_ADJACENCY_MATRIX:
