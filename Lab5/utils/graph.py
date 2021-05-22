@@ -166,7 +166,7 @@ class Graph:
 		self.graph_weights = [[0 for i in range(nodes_count)] for j in range(nodes_count)]
 	
 		for row in range(nodes_count):
-			for column in range(row + 1, nodes_count):
+			for column in range(nodes_count):
 				if(self.graph_representation[row][column]):
 					weight = randrange(min, max)
 					self.graph_weights[row][column] = weight
