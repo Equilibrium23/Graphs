@@ -15,7 +15,7 @@ def _get_offsets(index, layer_numbers, number_of_nodes_in_layer):
 
     return x, y
 
-def plot_digraph_by_layers(digraph):
+def plot_digraph_by_layers(digraph, f_FF = []):
     if len(digraph.layer_numbers) == 0:
         raise Exception('W grafie nie ma numerow warstw!!!')
 
@@ -97,7 +97,9 @@ def plot_digraph_by_layers(digraph):
             direction[1] = direction[1]/length
 
             distance = 1.5
-            strToDraw = graph.graph_weights[count][neighbor]
-            ax.text(x_Pos + direction[0]*distance,  y_Pos +  direction[1]*distance, f'{strToDraw}', color = 'blue')
+            strToDraw = str(graph.graph_weights[count][neighbor])
+            if(len(f_FF)):
+                strToDraw = str(f_FF[count][neighbor]) + '/' + strToDraw
+            ax.text(x_Pos + direction[0]*distance,  y_Pos +  direction[1]*distance + 0.2, strToDraw, color = 'red')
 
     plt.show()
