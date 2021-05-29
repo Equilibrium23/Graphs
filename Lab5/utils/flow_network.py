@@ -81,12 +81,7 @@ def make_additional_connections(network, N):
 	return network
 
 
-def generate_network(N : int):
-	layers_sizes = generate_layers(N)
-	graph = generate_base_network(layers_sizes)
-	graph = make_additional_connections(graph, N)
-
-	#	to be able to plot graph by layers
+def add_layers(graph, layers_sizes):
 	layer_numbers = []
 	layer_numbers.append(0)	#wierzcholek s
 	for i in range(len(layers_sizes)):
@@ -94,7 +89,13 @@ def generate_network(N : int):
 			layer_numbers.append(i + 1)
 	layer_numbers.append(max(layer_numbers) + 1)	#wierzcholek t
 	graph.layer_numbers = layer_numbers
-	#
+
+
+def generate_network(N : int):
+	layers_sizes = generate_layers(N)
+	graph = generate_base_network(layers_sizes)
+	graph = make_additional_connections(graph, N)
+	add_layers(graph, layers_sizes)
 
 	return graph
 
