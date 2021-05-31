@@ -21,8 +21,10 @@ def plot_digraph_by_layers(digraph, f_FF = []):
 
     layer_numbers = digraph.layer_numbers 
 
-    graph = digraph
+    graph = Graph(GraphRepresentationType.DIGRAF_ADJACENCY_MATRIX, digraph.graph_representation.copy())
+    graph.layer_numbers = digraph.layer_numbers.copy()
     graph.change_to_adjacency_list()
+    graph.graph_weights = digraph.graph_weights.copy()
     radius = 9.5
     #graph.print_graph_representation()
 
