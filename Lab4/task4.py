@@ -2,6 +2,7 @@ from utils.handleInput import parse_graph_input
 from utils.graph import Graph,GraphRepresentationType
 from utils.graphRandomizer import generate_strongly_connected_digraph
 from utils.johnson import johnson
+from utils.plot import plot_digraph
 
 def print_distance_matrix(D: list):
     print("\nMacierz odleglosci:")
@@ -18,3 +19,4 @@ if __name__ == "__main__":
     digraph.print_weights()
     D = johnson(digraph)
     print_distance_matrix(D)
+    plot_digraph(digraph)
