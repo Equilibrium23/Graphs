@@ -2,6 +2,7 @@ from .graph import Graph,GraphRepresentationType
 import numpy as np
 from .bellman_ford import bellman_ford, print_bellman_ford
 from .dijkstra import dijkstra
+import copy
 
 def create_graph_with_new_node(graph: Graph):
     matrix = graph.graph_representation.copy()
@@ -20,6 +21,7 @@ def create_graph_with_new_node(graph: Graph):
 
 
 def johnson(graph: Graph):
+    saved_weights = copy.deepcopy(graph.graph_weights)
     n_of_nodes = len(graph.graph_representation)
     s = n_of_nodes
     new_G = create_graph_with_new_node(graph)
@@ -47,4 +49,5 @@ def johnson(graph: Graph):
         for v in range(n_of_nodes):
             D[u][v] = d_s[v] - h[u] + h[v]
 
+    graph.graph_weights = saved_weights
     return D
