@@ -89,8 +89,13 @@ def plot_digraph_by_layers(digraph, f_FF = []):
             x_Pos2 = positon_of_first_layer + second_layer_0 * X_layer_offset[second_layer_0]
             y_Pos2 = positon_of_first_node_in_layer[second_layer_0] + y2 * layer_offset[second_layer_0]
 
-            plt.arrow(x_Pos, y_Pos, x_Pos2 - x_Pos, y_Pos2 - y_Pos, width = 0.05, length_includes_head = True, head_width = 0.3)
+            # strzlki z kolorami gdy podano f_FF ( dla zad 2 zestaw 5 )
+            if(len(f_FF) and f_FF[count][neighbor] == 0):
+                plt.arrow(x_Pos, y_Pos, x_Pos2 - x_Pos, y_Pos2 - y_Pos, width = 0.05, length_includes_head = True, head_width = 0.3, color = 'grey')
+            else:
+                plt.arrow(x_Pos, y_Pos, x_Pos2 - x_Pos, y_Pos2 - y_Pos, width = 0.05, length_includes_head = True, head_width = 0.3)
 
+            # wagi krawedzi
             direction = [x_Pos2 - x_Pos, y_Pos2 - y_Pos]
             length = math.sqrt(direction[0]**2 + direction[1]**2)
             direction[0] = direction[0]/length
@@ -98,7 +103,7 @@ def plot_digraph_by_layers(digraph, f_FF = []):
 
             distance = 1.5
             strToDraw = str(graph.graph_weights[count][neighbor])
-            if(len(f_FF)):
+            if(len(f_FF)):  #
                 strToDraw = str(f_FF[count][neighbor]) + '/' + strToDraw
             ax.text(x_Pos + direction[0]*distance,  y_Pos +  direction[1]*distance + 0.2, strToDraw, color = 'red')
 

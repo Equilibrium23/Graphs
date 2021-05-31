@@ -124,7 +124,7 @@ class Graph:
 		else:
 			for row in self.graph_representation:
 				for node in row:
-					print(node, end = ' ')
+					print('{:>3}'.format(node), end='')
 				print()
 		print()
 
@@ -134,7 +134,7 @@ class Graph:
 			print("Weights matrix: ")
 			for row in self.graph_weights:
 				for weight in row:
-					print(weight, end = ' ')
+					print('{:>3}'.format(weight), end='')
 				print()
 		else:
 			print("Graph has no weights.")
