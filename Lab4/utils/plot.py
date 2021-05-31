@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from math import sin, cos, radians
+from math import sin, cos, radians, sqrt
 from random import random
 
 def plot_digraph(digraph, labels = []):
@@ -43,5 +43,15 @@ def plot_digraph(digraph, labels = []):
 				x2 = radius*cos(radians(((count2)/float(number_of_nodes)*360)))
 				y2 = radius*sin(radians(((count2)/float(number_of_nodes)*360)))
 				plt.arrow(x, y, x2 - x, y2 - y, width = 0.05, length_includes_head = True, head_width = 0.3)
+
+				# wagi krawedzi
+				direction = [x2-x, y2-y]
+				length = sqrt(direction[0]**2 + direction[1]**2)
+				direction[0] = direction[0]/length
+				direction[1] = direction[1]/length
+
+				distance = 1.5
+				strToDraw = str(graph.graph_weights[count][count2])
+				ax.text(x + direction[0]*distance,  y +  direction[1]*distance + 0.2, strToDraw, color = 'red')
 
 	plt.show()
