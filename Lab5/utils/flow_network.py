@@ -61,8 +61,8 @@ def black_box():
 
 def add_one_connection(graph, N):
 	vertex_count = len(graph.graph_representation) - 2
-	i = randrange(1, vertex_count)
-	j = randrange(1, vertex_count)
+	i = randrange(1, vertex_count + 1)
+	j = randrange(1, vertex_count + 1)
 	if(i != j and is_connection_legal(graph, i, j)):
 		if(black_box()):
 			graph.graph_representation[i][j] = 1
