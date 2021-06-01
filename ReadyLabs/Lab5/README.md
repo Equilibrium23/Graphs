@@ -18,3 +18,9 @@ pip install -r requirements.txt
 
 #### Zad 2
 - Uruchomienie: python task2.py 
+- sieć jest generowana za pomocą algorytmu z zadania 1
+- w skrypcie można zmieniać ilość warstw w sieci za pomocą zmiennej N (powinna wynosić co najmniej 2)
+- algorytm można wywołać dla dowolnego grafu za pomocą funckji: Ford_Fulkerson(G: Graph, s, t) z pliku:
+  /utils/Ford_Fulkerson.py, graf powinien mieć macierz wag oraz mieć typ: 
+  GraphRepresentationType.DIGRAF_ADJACENCY_MATRIX
+
