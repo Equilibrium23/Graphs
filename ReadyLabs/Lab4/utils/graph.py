@@ -13,8 +13,11 @@ class Graph:
 	def __init__(self, representation_type : GraphRepresentationType, graph_representation):
 		self.representation_type = representation_type
 		self.graph_representation = graph_representation
-		self.graph_weights = []
-	
+		if self.representation_type == GraphRepresentationType.ADJACENCY_MATRIX or self.representation_type == GraphRepresentationType.DIGRAF_ADJACENCY_MATRIX:
+			self.graph_weights = [[0]*len(self.graph_representation) for i in range(len(self.graph_representation))]
+		else:
+			self.graph_weights = []
+
 	def change_graph_representation_to(self, new_representation_type : GraphRepresentationType):
 		if self.representation_type != new_representation_type and self.representation_type != GraphRepresentationType.DIGRAF_ADJACENCY_MATRIX:
 			if new_representation_type == GraphRepresentationType.ADJACENCY_LIST:

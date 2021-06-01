@@ -11,11 +11,50 @@
 #### Instalacja dodatkowych bibliotek wykorzystanych w projekcie:
 pip install -r requirements.txt
 
+
+
+
 #### Zad 1
-- tba
+- Uruchomienie: python task1.py
+- 1 linijka w main:
+    digraph = generate_Gnp_digraph(10,0.1)
+    tutaj manipulujemy losowaniem grafu
+    /////////////////////////////////////////////////////////////////////// 
+    def generate_Gnp_digraph(number_of_vertexes : int, probability : float)
+    /////////////////////////////////////////////////////////////////////// 
+    Do konsoli printowana jest reprezentacja macierzy sasiedztwa 
+    oraz pokazywany jest obraz z wygenerowanym grafem
 
 #### Zad 2
-- tba
+- Uruchomienie: python task2.py
+- 1 linijka w main:
+    digraph = generate_Gnp_digraph(10,0.1)
+    tutaj manipulujemy losowaniem grafu
+    /////////////////////////////////////////////////////////////////////// 
+    def generate_Gnp_digraph(number_of_vertexes : int, probability : float)
+    /////////////////////////////////////////////////////////////////////// 
+    Do konsoli printowana jest reprezentacja macierzy sasiedztwa,
+    Lista silnie spojnych skladowych znalezionych w grafie
+    oraz pokazywany jest obraz z wygenerowanym grafem
+
+Uwagi do digrafow:
+Gdybysmy chcieli operowac nie na losowym grafie:
+do pliku input/input.txt wpisujemy jego reprezentacje w formacie macierzy sasiedztwa:
+Macierz gdzie kolejne kolumny ooddzielane sa spacjami a kolejne wiersze enterem
+np.
+0 1 0 0
+1 0 0 0
+0 0 0 0
+0 0 0 1
+UWAGI : 
+- W pliku oprocz wyzej wymienionych reprezentacji grafu nie powinny znalezc sie zadne inne cyfy/litery/biale znaki.
+
+w main np:
+
+with open ('input/input.txt', 'r') as graph_input:
+    digraph_input = graph_input.readlines()
+    parsed_digraph_input = parse_graph_input(GraphRepresentationType.DIGRAF_ADJACENCY_MATRIX, digraph_input)
+    graph = Graph(GraphRepresentationType.DIGRAF_ADJACENCY_MATRIX, parsed_digraph_input)
 
 #### Zad 3
 - Uruchomienie: python task3.py 
