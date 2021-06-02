@@ -31,7 +31,11 @@ def generate_k_regular_graph(k, vertex_count = 0):
 			vertex_count, degree_sequence = generate_graph_properties(k)
 	
 	graph = generate_graph_from_degree_sequence(degree_sequence)
-	randomize_edges(graph, 7)
-	print(f"generated {k}_regular graph")
 
+	try:
+		randomize_edges(graph, 7)
+	except:
+		pass
+
+	print(f"generated {k}_regular graph")
 	return graph
