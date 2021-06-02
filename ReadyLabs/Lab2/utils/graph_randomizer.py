@@ -4,6 +4,7 @@ from utils.graph import Graph
 from utils.plot import plot_graph
 from utils.graph import Graph, GraphRepresentationType
 from utils.plot import plot_graph
+from random import randint
 
 def get_random_two_connected_nodes(graph: Graph):
     number_of_nodes = len(graph.graph_representation)
