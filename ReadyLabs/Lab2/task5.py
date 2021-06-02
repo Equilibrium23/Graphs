@@ -1,7 +1,4 @@
-import sys
-sys.path.append('../')
-
-from Lab1.utils.plot import plot_graph
+from utils.plot import plot_graph
 from utils.k_regular import generate_k_regular_graph
 from random import randrange
 

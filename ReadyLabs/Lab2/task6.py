@@ -1,5 +1,3 @@
-import sys
-sys.path.append('../')
 from utils.handleInput import check_type_of_input, BadInputException, parse_graph_input
 from utils.graph import Graph, GraphRepresentationType
 from utils.Stack import Stack

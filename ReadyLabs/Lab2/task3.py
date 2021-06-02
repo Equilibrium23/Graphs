@@ -1,11 +1,8 @@
-import sys
-
 from matplotlib.pyplot import viridis
-sys.path.append('../')
-from Lab1.utils.graph import Graph
-from Lab1.utils.plot import plot_graph
-from Lab1.utils.handleInput import *
-from Lab1.utils.graphRandomizer import *
+from utils.graph import Graph
+from utils.plot import plot_graph
+from utils.handleInput import *
+from utils.graph_randomizer import *
 from utils.connected_components import *
 
 def find_connected_components(G: Graph):

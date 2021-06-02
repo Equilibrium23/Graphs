@@ -1,6 +1,4 @@
-import sys
-sys.path.append('../')
-from Lab1.utils.plot import plot_graph
+from utils.plot import plot_graph
 from utils.euler_graph_handler import generate_random_eulerian_graph, check_if_eulerian
 
 

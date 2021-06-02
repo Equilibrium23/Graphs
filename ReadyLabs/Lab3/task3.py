@@ -1,8 +1,6 @@
-import sys
-sys.path.append('../')
-from Lab1.utils.graph import Graph
-from Lab1.utils.plot import plot_graph
-from Lab1.utils.handleInput import *
+from utils.graph import Graph
+from utils.plot import plot_graph
+from utils.handleInput import *
 from utils.connected_graph import *
 from utils.dijkstra import calculate_distance_matrix
 
