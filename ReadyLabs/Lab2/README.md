@@ -22,13 +22,12 @@ pip install -r requirements.txt
   a następnie rysowany ponownie po randomizacji jego krawędzi.
 - Funkcja randomize_edges działa tylko dla grafów o liczbie wierzchołków większej lub równej 4.
   W innych przypadkach rzucany jest wyjątek.
-- W przypadku gdy grafu nie da się zrandomizować - również rzucany jest wyjątek
 
 #### Zad 3
 - Uruchomienie: python task3.py 
 - Graf wejściowy zostaje wylosowany za pomocą funcji z zestawu 1
-- funckja: find_connected_components(G: Graph) znajduje wspólne składowe w grafie a następnie
-  wypisuje i rysuje graf (kolory dla różnych składowych są losowe)
+- funckja: find_connected_components(G: Graph) znajduje wspolne skladowe w grafie a następnie
+  wypisuje jei rysuje graf (kolory dla różnych składowych są losowe)
 - Można też wywołać funckję: components(G: Graph) z pliku: ./utils/connected_components.py, 
   która zwraca tablicę o dlugosci ilości wirzchołków, gdzie każdy element jest etykietą [1, n] 
   do składowej (n - ilość składowych)
@@ -45,8 +44,9 @@ pip install -r requirements.txt
   i usuwa te przez które przeszła (wymaganiem dotyczącym wyboru krawędzi jest omijanie mostów - przechodź
   przez most jeśli nie ma innej możliwości). Gdy algorytm dotrze do miejsca w którym nie ma żadnej innej
   drogi sprawdza czy jest w wierzchołku startowym i czy w grafie zostały jakieś krawędzie.
-- funckja: check_if_eulerian została zaimplementowana zgodnie ze wskazówkami zamieszczonymi na upelu, 
-  w argumencie podajemy graf dla którego wywołujemy funkcję, zwraca True/False
+- funckja: check_if_eulerian została zaimplementowana zgodnie ze wskazówkami zamieszczonymi na upelu, w argumencie 
+  podajemy graf dla którego wywołujemy funkcję, zwraca True/False oraz ścieżkę (w przypadku w którym graf nie jest
+  eulerowski ścieżka posiada niezdefiniowane dane)
 
 
 #### Zad 5

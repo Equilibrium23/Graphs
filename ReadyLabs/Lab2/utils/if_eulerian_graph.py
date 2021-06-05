@@ -16,22 +16,24 @@ def check_if_eulerian(G: Graph):
 
     starting_vertex = 0
 
+    path = []
+
     if(len(G.graph_representation) == 1):               # graf składa się z jednego wierzchołka
-        return True
+        return True, path
     else:
         for key, l in G.graph_representation.items():    # jezeli jakis wierzcholek jest odosobniony
             if(len(l) == 0):
-                return False
+                return False, path
 
     
-    last_vertex = choose_edge_and_delete(G, starting_vertex)
+    last_vertex = choose_edge_and_delete(G, starting_vertex, path)
 
     is_eulerian_graph = last_vertex == starting_vertex and check_if_graph_has_no_edges(G)
 
     G.graph_representation = old_graph_representation
     G.change_graph_representation_to(old_representation_type)
 
-    return is_eulerian_graph
+    return is_eulerian_graph, path
 
 
 def check_if_edge_is_bridge(G: Graph, vertex1: int, vertex2: int):
@@ -56,7 +58,7 @@ def check_if_graph_has_no_edges(G: Graph):
     return True
 
 
-def choose_edge_and_delete(G: Graph, curr_vertex: int):
+def choose_edge_and_delete(G: Graph, curr_vertex: int, path):
     gr = G.graph_representation
 
     if(len(gr[curr_vertex]) == 0):
@@ -66,8 +68,10 @@ def choose_edge_and_delete(G: Graph, curr_vertex: int):
             vert = gr[curr_vertex][i]
             if(not(check_if_edge_is_bridge(G, curr_vertex, vert) and i!=len(gr[curr_vertex])-1)):
                 #print(f"Usuwam: {curr_vertex}, {vert}")
+                #path.append(vert)
+                path.append([curr_vertex, vert])
                 delete_edge(G, curr_vertex, vert)
-                return choose_edge_and_delete(G, vert)
+                return choose_edge_and_delete(G, vert, path)
 
 
 def delete_edge(G: Graph, vertex1: int, vertex2: int):
