@@ -22,6 +22,7 @@ pip install -r requirements.txt
   a następnie rysowany ponownie po randomizacji jego krawędzi.
 - Funkcja randomize_edges działa tylko dla grafów o liczbie wierzchołków większej lub równej 4.
   W innych przypadkach rzucany jest wyjątek.
+- W przypadku gdy grafu nie da się zrandomizować - również rzucany jest wyjątek
 
 #### Zad 3
 - Uruchomienie: python task3.py 
