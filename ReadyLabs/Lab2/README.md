@@ -44,6 +44,9 @@ pip install -r requirements.txt
   i usuwa te przez które przeszła (wymaganiem dotyczącym wyboru krawędzi jest omijanie mostów - przechodź
   przez most jeśli nie ma innej możliwości). Gdy algorytm dotrze do miejsca w którym nie ma żadnej innej
   drogi sprawdza czy jest w wierzchołku startowym i czy w grafie zostały jakieś krawędzie.
+- funckja: check_if_eulerian została zaimplementowana zgodnie ze wskazówkami zamieszczonymi na upelu, w argumencie 
+  podajemy graf dla którego wywołujemy funkcję, zwraca True/False oraz ścieżkę (w przypadku w którym graf nie jest
+  eulerowski ścieżka posiada niezdefiniowane dane)
 
 
 #### Zad 5
