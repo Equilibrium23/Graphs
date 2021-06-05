@@ -1,7 +1,5 @@
-import sys
-sys.path.append('../')
-from Lab1.utils.graph import Graph
-from Lab1.utils.plot import plot_graph
+from utils.graph import Graph
+from utils.plot import plot_graph
 from utils.graph_randomizer import randomize_edges
 from utils.degree_sequence import is_degree_sequence, generate_graph_from_degree_sequence
 
@@ -33,7 +31,11 @@ def generate_k_regular_graph(k, vertex_count = 0):
 			vertex_count, degree_sequence = generate_graph_properties(k)
 	
 	graph = generate_graph_from_degree_sequence(degree_sequence)
-	randomize_edges(graph, 7)
-	print(f"generated {k}_regular graph")
 
+	try:
+		randomize_edges(graph, 7)
+	except:
+		pass
+
+	print(f"generated {k}_regular graph")
 	return graph

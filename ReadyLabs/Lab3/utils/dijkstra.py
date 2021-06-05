@@ -1,8 +1,6 @@
-import sys
-sys.path.append('../')
 import numpy as np
-from Lab1.utils.graph import Graph
-from Lab1.utils.handleInput import *
+from utils.graph import Graph
+from utils.handleInput import *
 
 def calculate_distance_matrix(G: Graph):
     if(G.representation_type != GraphRepresentationType.ADJACENCY_MATRIX):

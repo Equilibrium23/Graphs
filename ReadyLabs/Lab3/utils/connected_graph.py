@@ -1,7 +1,5 @@
-import sys
-sys.path.append('../')
-from Lab1.utils.graph import Graph, GraphRepresentationType
-from Lab2.utils.degree_sequence import is_degree_sequence, generate_graph_from_degree_sequence
+from utils.graph import Graph, GraphRepresentationType
+from utils.degree_sequence import is_degree_sequence, generate_graph_from_degree_sequence
 
 from random import randrange
 

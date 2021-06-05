@@ -1,9 +1,6 @@
-import sys
-
 from matplotlib.pyplot import viridis
-sys.path.append('../')
-from Lab1.utils.graph import Graph
-from Lab1.utils.handleInput import *
+from utils.graph import Graph
+from utils.handleInput import *
 
 def get_number_of_connected_components(G: Graph):
     return max(components(G))

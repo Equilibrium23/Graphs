@@ -1,8 +1,5 @@
-import sys
-sys.path.append('../')
-
 from utils.connected_graph import generate_connected_graph
-from Lab1.utils.plot import plot_graph
+from utils.plot import plot_graph
 
 if __name__ == "__main__":
 	graph = generate_connected_graph(5)

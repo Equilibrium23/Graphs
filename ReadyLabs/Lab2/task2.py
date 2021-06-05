@@ -1,6 +1,4 @@
-import sys
-sys.path.append('../')
-from Lab1.utils.plot import plot_graph
+from utils.plot import plot_graph
 from utils.graph_randomizer import randomize_edges
 from utils.degree_sequence import generate_graph_from_degree_sequence
             
