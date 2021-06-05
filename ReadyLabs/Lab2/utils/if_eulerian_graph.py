@@ -33,8 +33,6 @@ def check_if_eulerian(G: Graph):
     G.graph_representation = old_graph_representation
     G.change_graph_representation_to(old_representation_type)
 
-    print(type(is_eulerian_graph))
-    print(type(path))
     return is_eulerian_graph, path
 
 
