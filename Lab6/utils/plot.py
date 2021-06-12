@@ -3,7 +3,7 @@ from math import sin, cos, radians
 from .graph import Graph, GraphRepresentationType
 from random import random
 
-def plot_graph(graph, labels = []):     # aby kolory dla etykiet zadzialaly trzeba podac tablice z etykietami (1,2,3...), ktora ma taki sam rozmiar jak ilosc wierzcholkow
+def plot_graph(graph, labels = [], save = False):     # aby kolory dla etykiet zadzialaly trzeba podac tablice z etykietami (1,2,3...), ktora ma taki sam rozmiar jak ilosc wierzcholkow
     graph.change_graph_representation_to(GraphRepresentationType.ADJACENCY_LIST)
     radius = 6
 
@@ -41,4 +41,7 @@ def plot_graph(graph, labels = []):     # aby kolory dla etykiet zadzialaly trze
         ax.add_patch(node_circle)
     
     graph.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
-    plt.show()
+    if(save):
+        plt.savefig("input.png")
+    else:
+        plt.show()
