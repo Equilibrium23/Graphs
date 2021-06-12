@@ -14,6 +14,6 @@ def sum_wages_in_cycle(graph: Graph):
             if(gr[i][j] == 1):
                 sum = sum + gw[i][j]
 
-    return sum // 2
+    return sum / 2
 
 
