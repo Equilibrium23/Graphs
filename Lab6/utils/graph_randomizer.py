@@ -62,7 +62,7 @@ def swap_two_pairs_of_nodes(graph: Graph):
         c, d = get_random_two_connected_nodes(graph)
         matrix = graph.graph_representation
 
-        if(a != d and b != c and a != c and b != d):# and matrix[a][d] == 0 and matrix[b][c] == 0):
+        if(a != d and b != c and a != c and b != d and matrix[a][d] == 0 and matrix[b][c] == 0):
             matrix[a][b] = matrix[b][a] = matrix[c][d] = matrix[d][c] = 0
             matrix[a][d] = matrix[d][a] = matrix[c][b] = matrix[b][c] = 1
             graph.change_graph_representation_to(GraphRepresentationType.ADJACENCY_LIST)
@@ -70,7 +70,6 @@ def swap_two_pairs_of_nodes(graph: Graph):
             checker.check_hamilton(0)
             result = checker.is_hamiltionian()[0]
             graph.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
-            print(result)
             if result == False:
                 matrix[a][b] = matrix[b][a] = matrix[c][d] = matrix[d][c] = 1
                 matrix[a][d] = matrix[d][a] = matrix[c][b] = matrix[b][c] = 0

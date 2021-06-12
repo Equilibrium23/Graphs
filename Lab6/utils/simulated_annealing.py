@@ -40,8 +40,11 @@ def annealing(cycle : Graph, IT_MAX : int):
         for it in range(IT_MAX):
             new_matrix = deepcopy(cycle.graph_representation)
             new_cycle = Graph(GraphRepresentationType.ADJACENCY_MATRIX, new_matrix)
-            new_cycle.add_connection_weights(new_matrix)
-            two_opt(new_cycle, 1)
+            new_cycle.add_connection_weights(cycle.graph_weights)
+            try:
+                two_opt(new_cycle, 1)
+            except:
+                pass
             new_path_length = sum_wages_in_cycle(new_cycle)
             if(new_path_length < path_length):
                 path_length = new_path_length
