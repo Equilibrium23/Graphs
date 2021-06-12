@@ -23,7 +23,7 @@ def generate_hamilton_cycle_graph(graph: Graph):
 
 def komiwojazer(full_graph : Graph):
     cycle = generate_hamilton_cycle_graph(full_graph)
-    path = annealing(cycle)
+    path = annealing(cycle, 2)
 
     return path
 
