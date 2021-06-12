@@ -7,5 +7,6 @@ if __name__ == "__main__":
     path2 = 'input/200.dat'
     graph = travelling_salesman_graph(path1)
 
-    new_cycle = komiwojazer(graph)
+    new_cycle, length = komiwojazer(graph)
     plot_graph(new_cycle)
+    print(f"Długość cyklu: {length}")

@@ -23,9 +23,9 @@ def generate_hamilton_cycle_graph(graph: Graph):
 
 def komiwojazer(full_graph : Graph):
     cycle = generate_hamilton_cycle_graph(full_graph)
-    path = annealing(cycle, 2)
+    path, length = annealing(cycle, 2)
 
-    return path
+    return path, length
 
 
 def annealing(cycle : Graph, IT_MAX : int):
@@ -45,4 +45,4 @@ def annealing(cycle : Graph, IT_MAX : int):
                 if(uniform(0, 1) < exp(-(new_path_length - path_length) / T)):
                     path_length = new_path_length
                     cycle = new_cycle
-    return cycle
+    return cycle, path_length
