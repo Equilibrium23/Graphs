@@ -1,4 +1,5 @@
 from math import sqrt
+from typing import List
 from .graph import Graph, GraphRepresentationType
 
 class Point:
