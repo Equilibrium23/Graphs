@@ -58,14 +58,33 @@ def parse_wage_graph(graph_input):
         value.sort(key = lambda x : x[1])
     return [parsed_graph,min_max_vertex[0],min_max_vertex[1]]
 
+def get_graph_object(graph_input):
+    adjacency_matrix = [[0] * len(graph_input) for i in range(len(graph_input))]
+    weights_matrix = [[0] * len(graph_input) for i in range(len(graph_input))]
+
+    for vertex,neighborhood in graph_input.items():
+        for neighbour_vertex in neighborhood:
+            adjacency_matrix[vertex][neighbour_vertex[0]] = 1
+            weights_matrix[vertex][neighbour_vertex[0]] = neighbour_vertex[1]
+
+    graph = Graph( GraphRepresentationType.ADJACENCY_MATRIX, adjacency_matrix )
+    graph.add_connection_weights(weights_matrix)
+    return graph
+
+from utils.plot import plot_graph, plot_minimum_spanning_tree_road
+from utils.graph import Graph, GraphRepresentationType
+
 if __name__ == "__main__":
     with open ('input/input5.txt', 'r') as graph_input:
         graph_data = parse_wage_graph(graph_input)
         graph = graph_data[0]
         min_vertex = graph_data[1]
         max_vertex = graph_data[2]
-        start_vertex = 7
+        start_vertex = 2
         minimum_spanning_tree_road = prime_minimum_spanning_tree(graph, start_vertex - min_vertex)
+
+        graph = get_graph_object(graph)
+        plot_minimum_spanning_tree_road(graph, minimum_spanning_tree_road[0])
         for edge in minimum_spanning_tree_road[0]:
             print("[{},{}]".format(edge[0]+min_vertex,edge[1]+min_vertex))
         print("Waga drogi -> {}".format(minimum_spanning_tree_road[1]))

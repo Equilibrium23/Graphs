@@ -151,3 +151,7 @@ class Graph:
 					weight = randrange(min, max)
 					self.graph_weights[row][column] = weight
 					self.graph_weights[column][row] = weight
+					
+	def add_connection_weights(self, connection_weights):	
+		self.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
+		self.graph_weights = connection_weights
