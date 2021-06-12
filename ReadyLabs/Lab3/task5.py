@@ -80,11 +80,11 @@ if __name__ == "__main__":
         graph = graph_data[0]
         min_vertex = graph_data[1]
         max_vertex = graph_data[2]
-        start_vertex = 2
+        start_vertex = 1
         minimum_spanning_tree_road = prime_minimum_spanning_tree(graph, start_vertex - min_vertex)
 
         graph = get_graph_object(graph)
-        plot_minimum_spanning_tree_road(graph, minimum_spanning_tree_road[0])
+        plot_minimum_spanning_tree_road(graph, minimum_spanning_tree_road[0], start_vertex)
         for edge in minimum_spanning_tree_road[0]:
             print("[{},{}]".format(edge[0]+min_vertex,edge[1]+min_vertex))
         print("Waga drogi -> {}".format(minimum_spanning_tree_road[1]))
