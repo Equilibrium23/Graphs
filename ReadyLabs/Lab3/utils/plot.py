@@ -81,14 +81,15 @@ def plot_minimum_spanning_tree_road(graph, minimum_spanning_tree_road, root):
 	for count, adj in enumerate(graph.graph_representation):
 		x = radius*cos(radians((count/float(number_of_nodes)*360)))
 		y = radius*sin(radians((count/float(number_of_nodes)*360)))
+
 		for count2, neighbor in enumerate(adj):
 			if neighbor == 1:
 				x2 = radius*cos(radians(((count2)/float(number_of_nodes)*360)))
 				y2 = radius*sin(radians(((count2)/float(number_of_nodes)*360)))
 				if [count,count2] in minimum_spanning_tree_road or [count2, count] in minimum_spanning_tree_road:
-					plt.arrow(x, y, x2 - x, y2 - y, width = 0.05, length_includes_head = True, head_width = 0.3, edgecolor='yellow')
+					plt.arrow(x, y, x2 - x, y2 - y, width = 0.05, length_includes_head = True, head_width = 0, edgecolor='yellow')
 				else:
-					plt.arrow(x, y, x2 - x, y2 - y, width = 0.05, length_includes_head = True, head_width = 0.3)
+					plt.arrow(x, y, x2 - x, y2 - y, width = 0.05, length_includes_head = True, head_width = 0)
 
 				# wagi krawedzi
 				direction = [x2-x, y2-y]
