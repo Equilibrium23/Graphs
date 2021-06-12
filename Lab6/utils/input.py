@@ -36,5 +36,4 @@ def travelling_salesman_graph(path):
     
     graph = Graph(GraphRepresentationType.ADJACENCY_MATRIX, adjacency_matrix)
     graph.add_connection_weights(weights_matrix)
-    print(weights_matrix)
     return graph

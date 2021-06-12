@@ -5,6 +5,12 @@ from random import uniform
 from math import exp
 from copy import deepcopy
 from .plot import plot_graph
+from enum import Enum
+
+class FUNCTION_TYPES(Enum):
+    LINEAR = 1 
+    QUADRATIC = 2 
+    EXPONENTIAL = 3 
 
 def generate_hamilton_cycle_graph(graph: Graph):
     matrix = graph.graph_representation
@@ -22,18 +28,28 @@ def generate_hamilton_cycle_graph(graph: Graph):
     graph.graph_representation = matrix
     return graph
 
-def komiwojazer(full_graph : Graph, IT_MAX : int):
+def komiwojazer(full_graph : Graph, IT_MAX : int, function = FUNCTION_TYPES.QUADRATIC):
     cycle = generate_hamilton_cycle_graph(full_graph)
-    path, length = annealing(cycle, IT_MAX)
+    path, length = annealing(cycle, IT_MAX, function)
 
     return path, length
 
+def temperature(x, function_type):
+    if function_type == FUNCTION_TYPES.QUADRATIC:
+        return 0.001 * (100 - x)**2
 
-def annealing(cycle : Graph, IT_MAX : int):
+    if function_type == FUNCTION_TYPES.LINEAR:
+        return (100 - x)/10
+
+    if function_type == FUNCTION_TYPES.EXPONENTIAL:
+        return (10**((100 - x)/100) - 1 ) * (10/9)
+     
+
+def annealing(cycle : Graph, IT_MAX : int, function = FUNCTION_TYPES.QUADRATIC):
     path_length = sum_wages_in_cycle(cycle)
+    
     for i in range(100):
-        T = 0.001 * (100 - i)**2
-        print(path_length)
+        T = temperature(i, function)
         for it in range(IT_MAX):
             new_matrix = deepcopy(cycle.graph_representation)
             new_cycle = Graph(GraphRepresentationType.ADJACENCY_MATRIX, new_matrix)
