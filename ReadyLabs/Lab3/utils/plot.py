@@ -44,7 +44,7 @@ def plot_graph(graph, labels = []):     # aby kolory dla etykiet zadzialaly trze
 
 from math import sqrt
 
-def plot_minimum_spanning_tree_road(graph, minimum_spanning_tree_road):
+def plot_minimum_spanning_tree_road(graph, minimum_spanning_tree_road, root):
 	other_color_vertices = set()
 	for edge in minimum_spanning_tree_road:
 		other_color_vertices.add(edge[0])
@@ -59,7 +59,7 @@ def plot_minimum_spanning_tree_road(graph, minimum_spanning_tree_road):
 
 	number_of_nodes = len(graph.graph_representation)
 
-	node_color = ['lightgreen', 'yellow']
+	node_color = ['lightgreen', 'yellow', 'blue']
 	color_index = 0
 
 	for count in range(len(graph.graph_representation)):
@@ -70,6 +70,8 @@ def plot_minimum_spanning_tree_road(graph, minimum_spanning_tree_road):
 			color_index = 1
 		else:
 			color_index = 0
+		if count == root - 1:
+			color_index = 2
 	
 		node_circle = plt.Circle((x, y), 0.5, color=node_color[color_index])
 		ax.text(x + x*0.2, y + y*0.2, f'{count+1}')
