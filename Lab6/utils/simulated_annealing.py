@@ -21,9 +21,9 @@ def generate_hamilton_cycle_graph(graph: Graph):
     graph.graph_representation = matrix
     return graph
 
-def komiwojazer(full_graph : Graph):
+def komiwojazer(full_graph : Graph, IT_MAX : int):
     cycle = generate_hamilton_cycle_graph(full_graph)
-    path, length = annealing(cycle, 2)
+    path, length = annealing(cycle, IT_MAX)
 
     return path, length
 
@@ -32,11 +32,12 @@ def annealing(cycle : Graph, IT_MAX : int):
     path_length = sum_wages_in_cycle(cycle)
     for i in range(101):
         T = 0.001 * (i + 1)**2
+        print(path_length)
         for it in range(IT_MAX):
             new_matrix = deepcopy(cycle.graph_representation)
             new_cycle = Graph(GraphRepresentationType.ADJACENCY_MATRIX, new_matrix)
             new_cycle.add_connection_weights(new_matrix)
-            two_opt(new_cycle, 2)
+            two_opt(new_cycle, 1)
             new_path_length = sum_wages_in_cycle(new_cycle)
             if(new_path_length < path_length):
                 path_length = new_path_length
