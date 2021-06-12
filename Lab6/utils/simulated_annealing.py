@@ -4,6 +4,7 @@ from .graph_randomizer import two_opt
 from random import uniform
 from math import exp
 from copy import deepcopy
+from .plot import plot_graph
 
 def generate_hamilton_cycle_graph(graph: Graph):
     matrix = graph.graph_representation
@@ -23,6 +24,9 @@ def generate_hamilton_cycle_graph(graph: Graph):
 
 def komiwojazer(full_graph : Graph, IT_MAX : int):
     cycle = generate_hamilton_cycle_graph(full_graph)
+    plot_graph(cycle)
+    two_opt(cycle, 1)
+    plot_graph(cycle)
     path, length = annealing(cycle, IT_MAX)
 
     return path, length
