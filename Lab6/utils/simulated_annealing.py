@@ -30,8 +30,8 @@ def komiwojazer(full_graph : Graph):
 
 def annealing(cycle : Graph, IT_MAX : int):
     path_length = sum_wages_in_cycle(cycle)
-    for i in range(100):
-        T = 0.001 * i**2
+    for i in range(101):
+        T = 0.001 * (i + 1)**2
         for it in range(IT_MAX):
             new_matrix = deepcopy(cycle.graph_representation)
             new_cycle = Graph(GraphRepresentationType.ADJACENCY_MATRIX, new_matrix)
