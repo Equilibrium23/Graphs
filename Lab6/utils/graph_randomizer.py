@@ -71,6 +71,10 @@ def swap_two_pairs_of_nodes(graph: Graph):
             result = checker.is_hamiltionian()[0]
             graph.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
             print(result)
+            if result == False:
+                matrix[a][b] = matrix[b][a] = matrix[c][d] = matrix[d][c] = 1
+                matrix[a][d] = matrix[d][a] = matrix[c][b] = matrix[b][c] = 0
+                continue
             return
         
         max_iter -= 1

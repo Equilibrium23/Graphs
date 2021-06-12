@@ -40,4 +40,5 @@ def plot_graph(graph, labels = []):     # aby kolory dla etykiet zadzialaly trze
         ax.text(x - 0.2, y - 0.2, f'{count}')
         ax.add_patch(node_circle)
     
+    graph.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
     plt.show()
