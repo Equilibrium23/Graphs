@@ -1,6 +1,6 @@
 import sys
 from utils.input import travelling_salesman_graph
-from utils.plot import plot_graph
+from utils.plot import plot_graph, plot_tsp
 from utils.simulated_annealing import komiwojazer, FUNCTION_TYPES
 from utils.graph_randomizer import HamiltonChecker
 from utils.graph import GraphRepresentationType
@@ -17,4 +17,5 @@ if __name__ == "__main__":
     print(checker.is_hamiltionian()[1])
     new_cycle.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
     print(f"Długość cyklu: {length}")
-    plot_graph(new_cycle, save=True)
+    # plot_graph(new_cycle, save=True)
+    plot_tsp(filepath, checker.is_hamiltionian()[1], save=True)

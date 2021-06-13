@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from math import sin, cos, radians
 from .graph import Graph, GraphRepresentationType
 from random import random
+from .input import Point, read_input
 
 def plot_graph(graph, labels = [], save = False):     # aby kolory dla etykiet zadzialaly trzeba podac tablice z etykietami (1,2,3...), ktora ma taki sam rozmiar jak ilosc wierzcholkow
     graph.change_graph_representation_to(GraphRepresentationType.ADJACENCY_LIST)
@@ -41,6 +42,31 @@ def plot_graph(graph, labels = [], save = False):     # aby kolory dla etykiet z
         ax.add_patch(node_circle)
     
     graph.change_graph_representation_to(GraphRepresentationType.ADJACENCY_MATRIX)
+    if(save):
+        plt.savefig("input.png")
+    else:
+        plt.show()
+
+def plot_tsp(filename, cycle, save=False):
+    points = read_input(filename)
+
+    list_x = [point.x for point in points]
+    list_y = [point.y for point in points]
+    list.sort(list_x)
+    list.sort(list_y)
+    fig, ax = plt.subplots()
+    ax.set_xlim((list_x[0] - 5, list_x[len(points)-1] + 5))
+    ax.set_ylim((list_y[0] - 5, list_y[len(points)-1] + 5))
+    plt.axis('off')
+    for point in points:
+        node_circle = plt.Circle((point.x, point.y), 1.5)
+        ax.add_patch(node_circle)
+
+    for i in range(len(cycle)-1):
+        ax.plot([points[cycle[i]].x, points[cycle[i+1]].x],
+                [points[cycle[i]].y, points[cycle[i+1]].y],
+                color='red')
+
     if(save):
         plt.savefig("input.png")
     else:
