@@ -68,7 +68,7 @@ def get_graph_object(graph_input):
             weights_matrix[vertex][neighbour_vertex[0]] = neighbour_vertex[1]
 
     graph = Graph( GraphRepresentationType.ADJACENCY_MATRIX, adjacency_matrix )
-    graph.add_connection_weights(weights_matrix)
+    graph.add_connection_weights_from_matrix(weights_matrix)
     return graph
 
 from utils.plot import plot_graph, plot_minimum_spanning_tree_road
