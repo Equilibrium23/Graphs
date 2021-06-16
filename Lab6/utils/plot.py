@@ -68,6 +68,6 @@ def plot_tsp(filename, cycle, save=False):
                 color='red')
 
     if(save):
-        plt.savefig("input.png")
+        plt.savefig(filename.split('.')[0] + ".png")
     else:
         plt.show()
